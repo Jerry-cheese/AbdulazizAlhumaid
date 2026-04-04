@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
+    --orange: #e8651a; --orange-glow: rgba(232,101,26,0.12);
+    --gray: #8a8a8a; --gray-light: #c0c0c0; --white: #f0ece6;
+    --border: rgba(232,101,26,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  * { cursor: none !important; }
+  #cursor { position:fixed; width:12px; height:12px; background:var(--orange); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:screen; }
+  #cursor-ring { position:fixed; width:36px; height:36px; border:1.5px solid var(--orange); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.3s,height 0.3s,opacity 0.3s; opacity:0.6; }
+  body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width:52px; height:52px; opacity:1; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.7; overflow-x:hidden; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:rgba(13,13,13,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:18px; letter-spacing:0.05em; color:var(--white); text-decoration:none; }
+  .nav-logo span { color:var(--orange); }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a { font-family:'DM Mono',monospace; font-size:12px; color:var(--gray); text-decoration:none; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.2s; position:relative; }
+  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--orange); transition:width 0.25s ease; }
+  .nav-links a:hover, .nav-links a.active { color:var(--orange); }
+  .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+
+  .page-header { padding: 160px 48px 80px; position: relative; overflow: hidden; }
+  .page-header::before { content:''; position:absolute; inset:0; opacity:0.03; background-image: linear-gradient(var(--orange) 1px,transparent 1px), linear-gradient(90deg,var(--orange) 1px,transparent 1px); background-size:60px 60px; }
+  .page-header-label { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .page-header-label::before { content:''; width:32px; height:1px; background:var(--orange); }
+  .page-header h1 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(48px,7vw,88px); line-height:1.0; letter-spacing:-0.02em; }
+
+  /* PROJECT NAV TABS */
+  .proj-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); padding: 0 48px; position:sticky; top:64px; background:rgba(13,13,13,0.95); backdrop-filter:blur(12px); z-index:50; overflow-x:auto; }
+  .proj-tab { padding:18px 28px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); text-decoration:none; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; white-space:nowrap; }
+  .proj-tab:hover { color:var(--orange); }
+  .proj-tab.active { color:var(--orange); border-color:var(--orange); }
+
+  /* PROJECT SECTION */
+  .project-section { padding:100px 48px; border-bottom:1px solid var(--border); }
+  .project-section:last-child { border-bottom:none; }
+
+  .proj-meta { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom:60px; }
+  .proj-meta-left {}
+  .proj-course { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
+  .proj-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(28px,4vw,48px); line-height:1.1; }
+  .proj-period { font-size:12px; color:var(--gray); margin-top:8px; }
+  .proj-meta-right { display:flex; flex-wrap:wrap; gap:8px; align-self:flex-end; }
+  .tag { padding:6px 14px; border:1px solid var(--border); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); opacity:0.85; }
+
+  /* STORY LAYOUT */
+  .proj-story { display:grid; grid-template-columns:2fr 1fr; gap:60px; align-items:start; margin-bottom:60px; }
+  .story-text {}
+  .story-label { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:12px; }
+  .story-body { color:var(--gray-light); font-size:14px; line-height:1.9; }
+  .story-body p { margin-bottom:16px; }
+  .story-body strong { color:var(--white); }
+  .story-sidebar {}
+
+  /* SPEC TABLE */
+  .spec-table { background:var(--bg2); }
+  .spec-table-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); padding:20px 24px 16px; border-bottom:1px solid var(--border); }
+  .spec-row { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .spec-row:last-child { border-bottom:none; }
+  .spec-key { font-size:12px; color:var(--gray); }
+  .spec-val { font-size:13px; color:var(--white); font-weight:400; }
+  .spec-val.good { color:#4caf82; }
+  .spec-val.orange { color:var(--orange); }
+
+  /* MEDIA GRID */
+  .media-section { margin-top:60px; }
+  .media-label { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .media-grid { display:grid; gap:2px; }
+  .media-grid.cols-2 { grid-template-columns:1fr 1fr; }
+  .media-grid.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+  .media-item { background:var(--bg2); overflow:hidden; position:relative; }
+  .media-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; filter:brightness(0.9) saturate(0.85); }
+  .media-item:hover img { transform:scale(1.03); filter:brightness(1) saturate(1); }
+  .media-caption { padding:16px 20px; background:var(--bg3); font-size:12px; color:var(--gray); line-height:1.5; }
+  .media-caption strong { color:var(--gray-light); }
+
+  /* ITERATION TIMELINE */
+  .iteration-timeline { margin:60px 0; position:relative; }
+  .iter-title { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:32px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .iter-items { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .iter-item { background:var(--bg2); padding:32px; position:relative; border-top:3px solid transparent; transition:border-color 0.3s; }
+  .iter-item:hover { border-color:var(--orange); }
+  .iter-num { font-family:'Syne',sans-serif; font-size:42px; font-weight:800; color:var(--orange); opacity:0.12; position:absolute; top:16px; right:20px; }
+  .iter-stage { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:10px; }
+  .iter-name { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; margin-bottom:12px; }
+  .iter-desc { font-size:13px; color:var(--gray); line-height:1.7; }
+
+  /* RESULTS TABLE */
+  .results-table { width:100%; border-collapse:collapse; margin-top:40px; }
+  .results-table th { text-align:left; padding:12px 20px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); background:var(--bg2); border-bottom:1px solid var(--border); }
+  .results-table td { padding:14px 20px; font-size:13px; color:var(--gray-light); border-bottom:1px solid rgba(255,255,255,0.04); }
+  .results-table tr:hover td { background:var(--bg2); }
+  .badge { display:inline-block; padding:3px 10px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  .badge-met { background:rgba(76,175,130,0.15); color:#4caf82; border:1px solid rgba(76,175,130,0.3); }
+  .badge-partial { background:rgba(232,101,26,0.12); color:var(--orange); border:1px solid var(--border); }
+
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+
+  footer { padding:24px 48px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:11px; color:var(--gray); letter-spacing:0.1em; }
+
+  @media(max-width:768px) {
+    nav,.page-header,.project-section { padding-left:24px; padding-right:24px; }
+    .proj-tabs { padding:0 24px; }
+    .proj-story { grid-template-columns:1fr; }
+    .iter-items { grid-template-columns:1fr; }
+    .media-grid.cols-2,.media-grid.cols-3 { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">ENG<span>.</span>FOLIO</a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="reflection.html">Reflection</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-label">Selected Work</div>
+  <h1>Projects</h1>
+</div>
+
+<div class="proj-tabs">
+  <a href="#capstone" class="proj-tab active">01 — HAPS Comms</a>
+  <a href="#bldc" class="proj-tab">02 — BLDC Motor</a>
+  <a href="#ppg" class="proj-tab">03 — PPG Sensor</a>
+  <a href="#vlsi" class="proj-tab">04 — VLSI IC</a>
+</div>
+
+<!-- ==================== PROJECT 01: CAPSTONE ==================== -->
+<section class="project-section" id="capstone">
+  <div class="proj-meta reveal">
+    <div class="proj-meta-left">
+      <div class="proj-course">Capstone — Team F1</div>
+      <div class="proj-title">HAPS Communications<br>Payload</div>
+      <div class="proj-period">Sep 2024 – Apr 2025 · UBC Okanagan</div>
+    </div>
+    <div class="proj-meta-right">
+      <span class="tag">LoRa</span><span class="tag">Wi-Fi HaLow</span>
+      <span class="tag">LTE</span><span class="tag">Raspberry Pi</span>
+      <span class="tag">RF Systems</span>
+    </div>
+  </div>
+
+  <!-- WHAT / WHY / HOW -->
+  <div class="proj-story reveal">
+    <div class="story-text">
+      <div class="story-label">The Challenge</div>
+      <div class="story-body">
+        <p>When conventional infrastructure fails — in remote regions or during disasters — people lose communication. Our client, Dr. Anas Chaaban at UBCO, posed the question: could a small, affordable payload lifted on a high-altitude balloon provide emergency wireless connectivity?</p>
+        <p>The answer we delivered was a <strong>proof-of-concept communications relay</strong> integrating three independent RF technologies on a single modular platform weighing just 591 g and costing under $375 CAD.</p>
+        <p>I contributed to LoRa module testing, 3D-printed enclosure development, prototype assembly, and the final system integration. The project required balancing range, power budget, mass, and regulatory compliance under ISED licence-exempt spectrum rules — all simultaneously.</p>
+      </div>
+    </div>
+    <div class="story-sidebar">
+      <div class="spec-table">
+        <div class="spec-table-title">Key Specifications</div>
+        <div class="spec-row"><span class="spec-key">LoRa Range</span><span class="spec-val good">5.4 km ✓</span></div>
+        <div class="spec-row"><span class="spec-key">HaLow Throughput</span><span class="spec-val good">4,929 kbps ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Payload Mass</span><span class="spec-val good">591 g ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Battery Runtime</span><span class="spec-val good">~5 hours ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Total BOM Cost</span><span class="spec-val good">$375.14 CAD ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Data Rate Target</span><span class="spec-val good">≥ 2 kbps ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Spectrum</span><span class="spec-val">915 MHz ISM</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN ITERATIONS -->
+  <div class="iteration-timeline reveal">
+    <div class="iter-title">Design Evolution — Three Iterations</div>
+    <div class="iter-items">
+      <div class="iter-item">
+        <div class="iter-num">1</div>
+        <div class="iter-stage">MVP Baseline</div>
+        <div class="iter-name">LoRa-Only Core</div>
+        <div class="iter-desc">Established the foundational long-range link using LoRa 915 MHz on a Raspberry Pi. Validated bidirectional text messaging. Low power, low cost — but bandwidth-limited to ~50 kbps. Became the non-negotiable backbone for all further iterations.</div>
+      </div>
+      <div class="iter-item">
+        <div class="iter-num">2</div>
+        <div class="iter-stage">Iteration 2</div>
+        <div class="iter-name">+ Wi-Fi HaLow</div>
+        <div class="iter-desc">Added Sub-1GHz Wi-Fi HaLow (Morse Micro MM6108) to provide a higher-bandwidth local link. Required custom kernel driver compilation and systemd service integration. Achieved ~4.9 Mbps throughput at −61 dBm RSSI indoors, exceeding the 2 kbps requirement by 2,000×.</div>
+      </div>
+      <div class="iter-item">
+        <div class="iter-num">3</div>
+        <div class="iter-stage">Final Design</div>
+        <div class="iter-name">+ LTE Backhaul</div>
+        <div class="iter-desc">Integrated a SIM7670G LTE modem for internet backhaul, enabling the full communication chain: Client → HaLow → HAP → LTE → Internet. Achieved 0.39 Mbps download / 0.45 Mbps upload via Rogers Wireless — sufficient for the emergency text-messaging use case.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERFORMANCE RESULTS TABLE -->
+  <div class="reveal">
+    <div class="media-label">Range Test Results — LoRa, Kelowna BC</div>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Test #</th><th>Distance (km)</th><th>SNR (dB)</th><th>RSSI (dBm)</th><th>Link Quality</th><th>Path</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>0.095</td><td>12.0</td><td>−82</td><td><span class="badge badge-met">100%</span></td><td>Direct LOS</td></tr>
+        <tr><td>2</td><td>0.324</td><td>7.8</td><td>−120</td><td><span class="badge badge-met">100%</span></td><td>Direct LOS</td></tr>
+        <tr><td>3</td><td>1.065</td><td>3.2</td><td>−116</td><td><span class="badge badge-met">81.7%</span></td><td>Trees in path</td></tr>
+        <tr><td>4</td><td>3.218</td><td>−5.2</td><td>−120</td><td><span class="badge badge-partial">0.25%</span></td><td>Semi-direct</td></tr>
+        <tr><td>5</td><td>3.436</td><td>−0.5</td><td>−118</td><td><span class="badge badge-met">56.7%</span></td><td>Direct LOS</td></tr>
+        <tr><td>6</td><td>5.446</td><td>2.2</td><td>−117</td><td><span class="badge badge-met">75%</span></td><td>Direct LOS ✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEDIA -->
+  <div class="media-section reveal">
+    <div class="media-label">System Architecture & Prototype</div>
+    <div class="media-grid cols-2">
+      <div class="media-item" style="aspect-ratio:16/10;">
+        <div style="width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px;">
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">System Architecture</div>
+          <!-- Simplified SVG architecture diagram -->
+          <svg viewBox="0 0 520 280" style="width:100%;max-width:480px;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#e8651a" opacity="0.7"/>
+              </marker>
+            </defs>
+            <!-- HAP Central Node -->
+            <rect x="190" y="100" width="140" height="80" rx="2" fill="#1a1a1a" stroke="#e8651a" stroke-width="1.5"/>
+            <text x="260" y="132" text-anchor="middle" fill="#e8651a" font-size="9" font-family="DM Mono" letter-spacing="1">HAP PAYLOAD</text>
+            <text x="260" y="148" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">Raspberry Pi</text>
+            <text x="260" y="162" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">Reticulum Stack</text>
+            <!-- LoRa -->
+            <rect x="20" y="60" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.3)" stroke-width="1"/>
+            <text x="70" y="80" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">LoRa Client</text>
+            <text x="70" y="96" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">915 MHz</text>
+            <line x1="122" y1="82" x2="188" y2="128" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
+            <!-- HaLow -->
+            <rect x="20" y="176" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.3)" stroke-width="1"/>
+            <text x="70" y="196" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">HaLow Client</text>
+            <text x="70" y="212" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">Sub-1GHz WiFi</text>
+            <line x1="122" y1="198" x2="188" y2="158" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
+            <!-- LTE -->
+            <rect x="400" y="116" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.3)" stroke-width="1"/>
+            <text x="450" y="136" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">LTE / Internet</text>
+            <text x="450" y="152" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">SIM7670G</text>
+            <line x1="332" y1="140" x2="398" y2="138" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
+            <!-- Labels -->
+            <text x="140" y="104" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">5.4 km</text>
+            <text x="140" y="176" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">4.9 Mbps</text>
+            <text x="350" y="130" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">Backhaul</text>
+          </svg>
+        </div>
+        <div class="media-caption"><strong>HAP System Architecture.</strong> Three-protocol comms stack: LoRa (long-range), HaLow (high-throughput local), LTE (internet backhaul).</div>
+      </div>
+      <div class="media-item" style="aspect-ratio:16/10;">
+        <div style="width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:32px;gap:16px;">
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);">End-to-End Speed Test</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%;max-width:340px;">
+            <div style="background:var(--bg2);padding:20px;text-align:center;">
+              <div style="font-family:Syne,sans-serif;font-size:32px;font-weight:800;color:#4caf82;">0.39</div>
+              <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:4px;">Mbps Down</div>
+            </div>
+            <div style="background:var(--bg2);padding:20px;text-align:center;">
+              <div style="font-family:Syne,sans-serif;font-size:32px;font-weight:800;color:#4caf82;">0.45</div>
+              <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:4px;">Mbps Up</div>
+            </div>
+            <div style="background:var(--bg2);padding:16px;text-align:center;">
+              <div style="font-family:Syne,sans-serif;font-size:20px;font-weight:700;color:var(--orange);">106ms</div>
+              <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-top:4px;">Ping</div>
+            </div>
+            <div style="background:var(--bg2);padding:16px;text-align:center;">
+              <div style="font-family:Syne,sans-serif;font-size:20px;font-weight:700;color:var(--orange);">Rogers</div>
+              <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-top:4px;">Carrier</div>
+            </div>
+          </div>
+        </div>
+        <div class="media-caption"><strong>Ookla Speedtest result.</strong> iPhone 15 → HaLow → Raspberry Pi → LTE → Internet. 0.39 Mbps download far exceeds the ≥2 kbps requirement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECT 02: BLDC ==================== -->
+<section class="project-section" id="bldc">
+  <div class="proj-meta reveal">
+    <div class="proj-meta-left">
+      <div class="proj-course">ENGR 467 — Electromechanical Systems</div>
+      <div class="proj-title">Custom Brushless DC<br>Motor & Controller</div>
+      <div class="proj-period">Jan 2025 – Apr 2025 · UBC Okanagan</div>
+    </div>
+    <div class="proj-meta-right">
+      <span class="tag">STM32</span><span class="tag">KiCad</span>
+      <span class="tag">FOC</span><span class="tag">Firmware</span><span class="tag">3D Printing</span>
+    </div>
+  </div>
+
+  <div class="proj-story reveal">
+    <div class="story-text">
+      <div class="story-label">The Challenge</div>
+      <div class="story-body">
+        <p>Most motor control courses use off-the-shelf motors. We built ours from scratch — mechanically, electrically, and in firmware. The goal was to deeply understand every stage of the drive chain, from the electromagnetic geometry of the rotor all the way to the commutation algorithm.</p>
+        <p>The motor is a custom <strong>outrunner brushless DC design</strong> with a 3D-printed rotor shell and stator frame, a three-phase wye-wound stator, and a permanent-magnet rotor. I took direct ownership of the coil winding process and helped troubleshoot the air-gap closure that was preventing the prototype from spinning.</p>
+        <p>For the controller, I developed a <strong>KiCad PCB and STM32 firmware</strong> implementing sensorless field-oriented control (FOC). FOC was chosen over simple six-step commutation because it produces smoother torque, lower electrical noise, and more reliable start-up — particularly important without hall-effect sensors to provide rotor position feedback.</p>
+      </div>
+    </div>
+    <div class="story-sidebar">
+      <div class="spec-table">
+        <div class="spec-table-title">System Overview</div>
+        <div class="spec-row"><span class="spec-key">Motor Type</span><span class="spec-val">Outrunner BLDC</span></div>
+        <div class="spec-row"><span class="spec-key">Stator Config</span><span class="spec-val">3-phase Wye</span></div>
+        <div class="spec-row"><span class="spec-key">Rotor</span><span class="spec-val">Permanent Magnet</span></div>
+        <div class="spec-row"><span class="spec-key">Control</span><span class="spec-val orange">Sensorless FOC</span></div>
+        <div class="spec-row"><span class="spec-key">MCU</span><span class="spec-val">STM32</span></div>
+        <div class="spec-row"><span class="spec-key">PCB Tool</span><span class="spec-val">KiCad</span></div>
+        <div class="spec-row"><span class="spec-key">Mechanical</span><span class="spec-val">FDM 3D Printed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iteration-timeline reveal">
+    <div class="iter-title">Build Process</div>
+    <div class="iter-items">
+      <div class="iter-item">
+        <div class="iter-num">1</div>
+        <div class="iter-stage">Mechanical</div>
+        <div class="iter-name">Motor Build</div>
+        <div class="iter-desc">3D-printed outrunner shell and stator former. Wye-wound the three-phase stator by hand — a meticulous process where winding symmetry directly determines motor balance and back-EMF quality. Iterated on core alignment and air-gap closure to reach a test-ready prototype.</div>
+      </div>
+      <div class="iter-item">
+        <div class="iter-num">2</div>
+        <div class="iter-stage">Electrical</div>
+        <div class="iter-name">PCB Design</div>
+        <div class="iter-desc">Designed the three-phase inverter PCB in KiCad — gate drivers, bootstrap circuits, bulk capacitance, and MCU interface headers. Careful attention to high-current switching loop minimization and thermal layout to keep MOSFET dissipation manageable during bench testing.</div>
+      </div>
+      <div class="iter-item">
+        <div class="iter-num">3</div>
+        <div class="iter-stage">Firmware</div>
+        <div class="iter-name">Sensorless FOC</div>
+        <div class="iter-desc">Implemented sensorless FOC in C on STM32. The algorithm estimates rotor position from back-EMF zero-crossings, then applies space-vector PWM to the three phases. This enabled smooth, controllable operation during bench testing without additional hall-effect sensors or encoders.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECT 03: PPG ==================== -->
+<section class="project-section" id="ppg">
+  <div class="proj-meta reveal">
+    <div class="proj-meta-left">
+      <div class="proj-course">ENGR 467 — Analog Systems</div>
+      <div class="proj-title">Optical PPG<br>Heart-Rate Sensor</div>
+      <div class="proj-period">Jan 2025 – Apr 2025 · UBC Okanagan</div>
+    </div>
+    <div class="proj-meta-right">
+      <span class="tag">Analog Design</span><span class="tag">LTSpice</span>
+      <span class="tag">TIA</span><span class="tag">Comparator</span><span class="tag">Biomedical</span>
+    </div>
+  </div>
+
+  <div class="proj-story reveal">
+    <div class="story-text">
+      <div class="story-label">The Challenge</div>
+      <div class="story-body">
+        <p>Photoplethysmography (PPG) is how your smartwatch measures heart rate — it shines light into skin and measures the variation in reflected light caused by pulsing blood volume. The signal is tiny, noisy, and riding on a large DC offset from ambient light. Building a circuit that reliably extracts a clean pulse waveform requires careful analog design at every stage.</p>
+        <p>I designed the complete signal chain from photodiode to digital pulse output. Starting with a <strong>transimpedance amplifier (TIA)</strong> to convert the photodiode's current into a measurable voltage, I then added AC-coupled amplification to remove the DC offset and increase gain on the small AC signal, an active bandpass filter to reject noise outside the cardiac frequency band (0.5–5 Hz), a <strong>Schmitt trigger comparator</strong> for clean edge detection, and a one-shot pulse shaper for a uniform digital output pulse.</p>
+        <p>The design methodology went from hand calculations → LTSpice simulation → breadboard verification, confirming that simulation predictions matched real hardware behavior.</p>
+      </div>
+    </div>
+    <div class="story-sidebar">
+      <div class="spec-table">
+        <div class="spec-table-title">Signal Chain</div>
+        <div class="spec-row"><span class="spec-key">Stage 1</span><span class="spec-val">Photodiode TIA</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 2</span><span class="spec-val">AC Amp (DC block)</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 3</span><span class="spec-val">Active BPF</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 4</span><span class="spec-val">Schmitt Comparator</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 5</span><span class="spec-val">Pulse Shaper</span></div>
+        <div class="spec-row"><span class="spec-key">Verification</span><span class="spec-val good">LTSpice + PCB ✓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signal chain diagram -->
+  <div class="media-section reveal">
+    <div class="media-label">Signal Processing Chain</div>
+    <div style="background:var(--bg2);padding:40px;">
+      <svg viewBox="0 0 700 120" style="width:100%;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#e8651a" opacity="0.8"/>
+          </marker>
+        </defs>
+        <!-- Blocks -->
+        <g>
+          <rect x="10" y="40" width="90" height="40" rx="2" fill="#1a1a1a" stroke="#e8651a" stroke-width="1.2"/>
+          <text x="55" y="57" text-anchor="middle" fill="#e8651a" font-size="8" font-family="DM Mono">PHOTODIODE</text>
+          <text x="55" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">+ LED</text>
+        </g>
+        <line x1="102" y1="60" x2="120" y2="60" stroke="#e8651a" stroke-width="1" marker-end="url(#a2)"/>
+        <g>
+          <rect x="122" y="40" width="90" height="40" rx="2" fill="#1a1a1a" stroke="rgba(232,101,26,0.5)" stroke-width="1"/>
+          <text x="167" y="57" text-anchor="middle" fill="#c0c0c0" font-size="8" font-family="DM Mono">TIA</text>
+          <text x="167" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">I → V</text>
+        </g>
+        <line x1="214" y1="60" x2="232" y2="60" stroke="#e8651a" stroke-width="1" marker-end="url(#a2)"/>
+        <g>
+          <rect x="234" y="40" width="90" height="40" rx="2" fill="#1a1a1a" stroke="rgba(232,101,26,0.5)" stroke-width="1"/>
+          <text x="279" y="57" text-anchor="middle" fill="#c0c0c0" font-size="8" font-family="DM Mono">AC AMP</text>
+          <text x="279" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">DC Block</text>
+        </g>
+        <line x1="326" y1="60" x2="344" y2="60" stroke="#e8651a" stroke-width="1" marker-end="url(#a2)"/>
+        <g>
+          <rect x="346" y="40" width="90" height="40" rx="2" fill="#1a1a1a" stroke="rgba(232,101,26,0.5)" stroke-width="1"/>
+          <text x="391" y="57" text-anchor="middle" fill="#c0c0c0" font-size="8" font-family="DM Mono">BPF</text>
+          <text x="391" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">0.5–5 Hz</text>
+        </g>
+        <line x1="438" y1="60" x2="456" y2="60" stroke="#e8651a" stroke-width="1" marker-end="url(#a2)"/>
+        <g>
+          <rect x="458" y="40" width="90" height="40" rx="2" fill="#1a1a1a" stroke="rgba(232,101,26,0.5)" stroke-width="1"/>
+          <text x="503" y="57" text-anchor="middle" fill="#c0c0c0" font-size="8" font-family="DM Mono">COMPARATOR</text>
+          <text x="503" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">Schmitt</text>
+        </g>
+        <line x1="550" y1="60" x2="568" y2="60" stroke="#e8651a" stroke-width="1" marker-end="url(#a2)"/>
+        <g>
+          <rect x="570" y="40" width="110" height="40" rx="2" fill="#1a1a1a" stroke="#4caf82" stroke-width="1.2"/>
+          <text x="625" y="57" text-anchor="middle" fill="#4caf82" font-size="8" font-family="DM Mono">PULSE OUTPUT</text>
+          <text x="625" y="72" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">Clean digital</text>
+        </g>
+        <!-- Small waveform hints -->
+        <text x="55" y="20" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">~μA signal</text>
+        <text x="167" y="20" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">mV range</text>
+        <text x="391" y="20" text-anchor="middle" fill="#8a8a8a" font-size="7" font-family="DM Mono">noise rejected</text>
+        <text x="625" y="20" text-anchor="middle" fill="#4caf82" font-size="7" font-family="DM Mono">BPM pulse</text>
+      </svg>
+      <div class="media-caption" style="margin-top:8px;padding:0;background:none;"><strong>PPG Signal Processing Chain.</strong> Five cascaded stages transform a noisy photodiode current into a clean digital heart-rate pulse output.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECT 04: VLSI ==================== -->
+<section class="project-section" id="vlsi">
+  <div class="proj-meta reveal">
+    <div class="proj-meta-left">
+      <div class="proj-course">ENGR 466 — VLSI Design</div>
+      <div class="proj-title">Custom CMOS IC —<br>Logic Cells & Comparator</div>
+      <div class="proj-period">Jan 2025 – Apr 2025 · UBC Okanagan</div>
+    </div>
+    <div class="proj-meta-right">
+      <span class="tag">CMOS</span><span class="tag">Cadence</span>
+      <span class="tag">LVS</span><span class="tag">Full-Custom Layout</span>
+    </div>
+  </div>
+
+  <div class="proj-story reveal">
+    <div class="story-text">
+      <div class="story-label">The Challenge</div>
+      <div class="story-body">
+        <p>VLSI design closes the loop between circuit theory and physical silicon. In this project, I designed and laid out a set of fundamental <strong>CMOS logic cells</strong> from transistor-level schematics all the way to verified physical layout — the same flow used in professional IC design.</p>
+        <p>The cell library included an inverter, 2-input AND gate, 2-input OR gate, and 2-input XOR gate. These were then composed into a <strong>3-bit magnitude comparator</strong> — a practically useful circuit that determines whether two binary numbers are equal, greater, or less than each other.</p>
+        <p>Every cell went through full <strong>Layout versus Schematic (LVS)</strong> verification in Cadence to confirm that the physical transistor connections in the layout exactly match the intended schematic — a mandatory step before any real silicon tape-out.</p>
+        <p>The project built deep intuition for CMOS sizing rules, routing constraints, DRC violations, and the trade-offs between area minimization and timing closure.</p>
+      </div>
+    </div>
+    <div class="story-sidebar">
+      <div class="spec-table">
+        <div class="spec-table-title">Design Deliverables</div>
+        <div class="spec-row"><span class="spec-key">Inverter (INV)</span><span class="spec-val good">Schematic + Layout ✓</span></div>
+        <div class="spec-row"><span class="spec-key">AND Gate</span><span class="spec-val good">Schematic + Layout ✓</span></div>
+        <div class="spec-row"><span class="spec-key">OR Gate</span><span class="spec-val good">Schematic + Layout ✓</span></div>
+        <div class="spec-row"><span class="spec-key">XOR Gate</span><span class="spec-val good">Schematic + Layout ✓</span></div>
+        <div class="spec-row"><span class="spec-key">1-bit Comparator</span><span class="spec-val good">Schematic + Layout ✓</span></div>
+        <div class="spec-row"><span class="spec-key">3-bit Comparator</span><span class="spec-val good">Full LVS Clean ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Tool</span><span class="spec-val">Cadence Virtuoso</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VLSI Image Grid -->
+  <div class="media-section reveal">
+    <div class="media-label">Schematics & Layouts — Cadence Virtuoso</div>
+    <div class="media-grid cols-3">
+      <div class="media-item">
+        <img src="https://via.placeholder.com/400x300/141414/e8651a?text=INV+Schematic" alt="Inverter Schematic" onerror="this.style.display='none';this.parentElement.querySelector('.placeholder-div').style.display='flex'">
+        <div class="placeholder-div" style="display:flex;width:100%;aspect-ratio:4/3;background:var(--bg3);align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+          <div style="font-size:28px;color:var(--orange);opacity:0.3;">⊕</div>
+          <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);">INV Schematic</div>
+        </div>
+        <div class="media-caption"><strong>Inverter Schematic.</strong> PMOS pull-up, NMOS pull-down. Foundation of all CMOS logic.</div>
+      </div>
+      <div class="media-item">
+        <div style="display:flex;width:100%;aspect-ratio:4/3;background:var(--bg3);align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+          <div style="font-size:28px;color:var(--orange);opacity:0.3;">∧</div>
+          <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);">AND Gate</div>
+        </div>
+        <div class="media-caption"><strong>AND Gate Layout.</strong> Series NMOS in pull-down, parallel PMOS in pull-up. LVS verified.</div>
+      </div>
+      <div class="media-item">
+        <div style="display:flex;width:100%;aspect-ratio:4/3;background:var(--bg3);align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+          <div style="font-size:28px;color:var(--orange);opacity:0.3;">⊻</div>
+          <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);">XOR Gate</div>
+        </div>
+        <div class="media-caption"><strong>XOR Gate Layout.</strong> Most complex standard cell — requires transmission gates for complementary pass-logic implementation.</div>
+      </div>
+    </div>
+    <div style="margin-top:2px;" class="media-grid cols-2">
+      <div class="media-item">
+        <div style="display:flex;width:100%;aspect-ratio:16/7;background:var(--bg3);align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">3-Bit Comparator — Full Layout</div>
+          <div style="font-size:13px;color:var(--gray);">Assembled from verified standard cells</div>
+        </div>
+        <div class="media-caption"><strong>3-Bit Comparator Full Layout.</strong> Composed from the four standard cells above. Complete LVS clean — physical layout matches schematic.</div>
+      </div>
+      <div class="media-item">
+        <div style="display:flex;width:100%;aspect-ratio:16/7;background:var(--bg3);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:24px;">
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">LVS Verification Flow</div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;">
+            <span style="padding:8px 14px;background:var(--bg2);border:1px solid var(--border);font-size:11px;color:var(--gray-light);">Schematic</span>
+            <span style="color:var(--orange);font-size:18px;">→</span>
+            <span style="padding:8px 14px;background:var(--bg2);border:1px solid var(--border);font-size:11px;color:var(--gray-light);">Layout</span>
+            <span style="color:var(--orange);font-size:18px;">→</span>
+            <span style="padding:8px 14px;background:rgba(76,175,130,0.1);border:1px solid rgba(76,175,130,0.3);font-size:11px;color:#4caf82;">LVS Clean ✓</span>
+          </div>
+        </div>
+        <div class="media-caption"><strong>LVS Clean.</strong> Layout Versus Schematic verification confirms all transistor connections match between physical layout and schematic netlist.</div>
+      </div>
+    </div>
+    <div style="margin-top: 12px; font-size:12px; color:var(--gray); padding: 16px; background: var(--bg2); border-left: 3px solid var(--border);">
+      <em>Note: Upload your Cadence screenshots (SchemINV.png, layINV.png, Schem3bitfinal.png, LVS3bit.png, etc.) to replace the placeholder blocks above for the final submission.</em>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 — Electrical Engineering Portfolio</span>
+  <span>UBC Okanagan</span>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function animCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor);}
+  animCursor();
+
+  // Tab active state on scroll
+  const sections = document.querySelectorAll('.project-section');
+  const tabs = document.querySelectorAll('.proj-tab');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        tabs.forEach(t=>t.classList.remove('active'));
+        const active = document.querySelector(`.proj-tab[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(s=>observer.observe(s));
+
+  // Reveal
+  const reveals=document.querySelectorAll('.reveal');
+  const obs2=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs2.unobserve(e.target);}});},{threshold:0.08});
+  reveals.forEach(r=>obs2.observe(r));
+</script>
+</body>
+</html>

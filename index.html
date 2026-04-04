@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Electrical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --orange: #e8651a;
+    --orange-dim: #c4531200;
+    --orange-glow: rgba(232, 101, 26, 0.15);
+    --gray: #8a8a8a;
+    --gray-light: #c0c0c0;
+    --white: #f0ece6;
+    --border: rgba(232,101,26,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Custom cursor */
+  * { cursor: none !important; }
+  #cursor {
+    position: fixed; width: 12px; height: 12px;
+    background: var(--orange); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.2s;
+    mix-blend-mode: screen;
+  }
+  #cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1.5px solid var(--orange); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+  }
+  body:has(a:hover) #cursor-ring,
+  body:has(button:hover) #cursor-ring { width: 52px; height: 52px; opacity: 1; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px;
+    letter-spacing: 0.05em; color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--gray); text-decoration: none;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--orange);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--orange); }
+  .nav-links a.active::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.03;
+    background-image:
+      linear-gradient(var(--orange) 1px, transparent 1px),
+      linear-gradient(90deg, var(--orange) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,101,26,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-label::before {
+    content: ''; width: 32px; height: 1px; background: var(--orange);
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(52px, 8vw, 96px); line-height: 1.0;
+    letter-spacing: -0.02em; margin-bottom: 32px;
+    position: relative;
+  }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .accent { color: var(--orange); }
+  .hero-desc {
+    max-width: 560px; color: var(--gray-light); font-size: 15px;
+    line-height: 1.8; margin-bottom: 48px;
+  }
+  .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--orange); color: #0d0d0d;
+    padding: 14px 28px; font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.35); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border); color: var(--gray-light);
+    padding: 14px 28px; font-family: 'Syne', sans-serif;
+    font-weight: 600; font-size: 13px; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 48px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gray); animation: pulse 2.5s ease-in-out infinite;
+  }
+  .hero-scroll::before {
+    content: ''; display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--orange), transparent);
+  }
+  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* SECTION COMMON */
+  section { padding: 100px 48px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; width: 32px; height: 1px; background: var(--orange); }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(32px, 4vw, 52px); line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  /* ABOUT CONTENT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .about-text p { color: var(--gray-light); margin-bottom: 20px; font-size: 15px; line-height: 1.9; }
+  .about-text p strong { color: var(--white); }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    margin-top: 48px;
+  }
+  .stat-box {
+    background: var(--bg3); padding: 28px 24px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .stat-box:hover { border-color: var(--orange); background: var(--bg2); }
+  .stat-number {
+    font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800;
+    color: var(--orange); line-height: 1;
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 8px; }
+
+  /* SKILLS */
+  .skills-panel { background: var(--bg2); padding: 48px; }
+  .skills-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 32px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .skill-category { margin-bottom: 32px; }
+  .skill-category-name {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 14px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    padding: 6px 14px; border: 1px solid var(--border);
+    font-size: 12px; color: var(--gray-light);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-glow); }
+
+  /* PROJECTS PREVIEW */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .project-card {
+    background: var(--bg2); padding: 40px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    text-decoration: none; display: block; position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--orange-glow) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .project-card:hover { border-color: var(--orange); background: var(--bg3); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num {
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; color: var(--orange); margin-bottom: 20px;
+    opacity: 0.6;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
+    color: var(--white); margin-bottom: 12px; line-height: 1.3;
+  }
+  .project-desc { color: var(--gray); font-size: 13px; line-height: 1.7; margin-bottom: 24px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .project-tag {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--orange); opacity: 0.8;
+    padding: 4px 10px; border: 1px solid rgba(232,101,26,0.3);
+  }
+  .project-arrow {
+    position: absolute; top: 40px; right: 40px;
+    font-size: 20px; color: var(--orange); opacity: 0;
+    transform: translateX(-8px); transition: opacity 0.3s, transform 0.3s;
+  }
+  .project-card:hover .project-arrow { opacity: 1; transform: translateX(0); }
+
+  /* CONTACT STRIP */
+  .contact-strip {
+    background: var(--bg2); border-top: 1px solid var(--border);
+    padding: 80px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 40px;
+  }
+  .contact-left .contact-heading {
+    font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+  }
+  .contact-left p { color: var(--gray); margin-top: 8px; }
+  .contact-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--gray-light); text-decoration: none; font-size: 13px;
+    border-bottom: 1px solid var(--border); padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { color: var(--orange); border-color: var(--orange); }
+
+  footer {
+    padding: 24px 48px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--gray); letter-spacing: 0.1em;
+  }
+
+  /* FADE IN */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero, section { padding-left: 24px; padding-right: 24px; }
+    .about-grid, .projects-grid { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">ENG<span>.</span>FOLIO</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="reflection.html">Reflection</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-label">Electrical Engineering · UBC Okanagan</div>
+  <h1>
+    <span class="line">Building</span>
+    <span class="line">Systems <span class="accent">That</span></span>
+    <span class="line">Connect.</span>
+  </h1>
+  <p class="hero-desc">
+    Fourth-year Electrical Engineering student specializing in embedded systems, RF communications,
+    and analog circuit design. I turn complex problems into working hardware.
+  </p>
+  <div class="hero-cta">
+    <a href="projects.html" class="btn-primary">View Projects →</a>
+    <a href="#about" class="btn-secondary">About Me</a>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title reveal">Engineer. Builder.<br>Problem Solver.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a fourth-year Electrical Engineering student at <strong>UBC Okanagan</strong>,
+        graduating in 2025. My work sits at the intersection of hardware and software — from
+        designing analog front-ends at the transistor level to writing firmware that brings
+        physical systems to life.
+      </p>
+      <p>
+        My engineering journey has taken me through RF communications, VLSI chip design,
+        power electronics, motor control, and biomedical sensing. I'm drawn to projects where
+        the constraints are real and the stakes are meaningful.
+      </p>
+      <p>
+        My capstone project — a <strong>High-Altitude Platform communications payload</strong> —
+        validated long-range wireless links over 5.4 km in Kelowna, BC, using LoRa, Wi-Fi HaLow,
+        and LTE on a self-contained, battery-powered platform weighing under 600 g.
+      </p>
+      <p>
+        Outside the lab, I care about building things that last: clean designs, well-documented
+        code, and systems that can be handed off and understood by the next engineer.
+      </p>
+      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="projects.html" class="btn-primary">See My Work →</a>
+        <a href="mailto:your@email.com" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex; flex-direction:column; gap:2px;">
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">Major Projects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">5.4</div>
+          <div class="stat-label">km RF Link</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">591</div>
+          <div class="stat-label">gram Payload</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">$375</div>
+          <div class="stat-label">BOM Budget</div>
+        </div>
+      </div>
+      <div class="skills-panel" style="margin-top:2px;">
+        <div class="skills-title">Technical Skills</div>
+        <div class="skill-category">
+          <div class="skill-category-name">Hardware & Design</div>
+          <div class="skill-tags">
+            <span class="skill-tag">KiCad PCB</span>
+            <span class="skill-tag">LTSpice</span>
+            <span class="skill-tag">Analog Circuits</span>
+            <span class="skill-tag">VLSI / Cadence</span>
+            <span class="skill-tag">3D Printing</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Firmware & Software</div>
+          <div class="skill-tags">
+            <span class="skill-tag">STM32 / C</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Field-Oriented Control</span>
+            <span class="skill-tag">Reticulum</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">RF & Communications</div>
+          <div class="skill-tags">
+            <span class="skill-tag">LoRa</span>
+            <span class="skill-tag">Wi-Fi HaLow</span>
+            <span class="skill-tag">LTE / 4G</span>
+            <span class="skill-tag">AWR Microwave</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS PREVIEW -->
+<section style="padding-top:20px;">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title reveal">Projects</h2>
+  <div class="projects-grid">
+
+    <a href="projects.html#capstone" class="project-card reveal">
+      <div class="project-num">01 — Capstone</div>
+      <div class="project-title">HAPS Communications Payload</div>
+      <div class="project-desc">Long-range wireless comms platform integrating LoRa, Wi-Fi HaLow, and LTE on a 591g balloon-deployable payload. Achieved 5.4 km verified RF link.</div>
+      <div class="project-tags">
+        <span class="project-tag">LoRa</span>
+        <span class="project-tag">Raspberry Pi</span>
+        <span class="project-tag">RF Systems</span>
+        <span class="project-tag">LTE</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="projects.html#bldc" class="project-card reveal">
+      <div class="project-num">02 — ENGR 467</div>
+      <div class="project-title">Custom BLDC Motor & Controller</div>
+      <div class="project-desc">Built a custom outrunner brushless DC motor from scratch with 3D-printed parts and wye-wound stator, plus a sensorless FOC controller on STM32.</div>
+      <div class="project-tags">
+        <span class="project-tag">STM32</span>
+        <span class="project-tag">KiCad</span>
+        <span class="project-tag">FOC</span>
+        <span class="project-tag">3D Printing</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="projects.html#ppg" class="project-card reveal">
+      <div class="project-num">03 — ENGR 467</div>
+      <div class="project-title">PPG Heart-Rate Sensor</div>
+      <div class="project-desc">Optical sensing front-end with transimpedance amplifier, active filtering, comparator, and pulse-shaping — verified from LTSpice simulation to breadboard.</div>
+      <div class="project-tags">
+        <span class="project-tag">Analog Design</span>
+        <span class="project-tag">LTSpice</span>
+        <span class="project-tag">TIA</span>
+        <span class="project-tag">Biomedical</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="projects.html#vlsi" class="project-card reveal">
+      <div class="project-num">04 — ENGR 466</div>
+      <div class="project-title">VLSI Custom IC Design</div>
+      <div class="project-desc">Full custom CMOS logic cells — inverter, AND, OR, XOR — and a 3-bit comparator, designed schematic-to-layout with LVS verification in Cadence.</div>
+      <div class="project-tags">
+        <span class="project-tag">CMOS</span>
+        <span class="project-tag">Cadence</span>
+        <span class="project-tag">LVS</span>
+        <span class="project-tag">VLSI</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-strip reveal">
+  <div class="contact-left">
+    <div class="contact-heading">Let's connect.</div>
+    <p>Open to opportunities, collaborations, and conversations.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:your@email.com" class="contact-link">✉ your@email.com</a>
+    <a href="https://github.com/yourusername" class="contact-link" target="_blank">⌥ GitHub</a>
+    <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">in LinkedIn</a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 — Electrical Engineering Portfolio</span>
+  <span>UBC Okanagan</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
