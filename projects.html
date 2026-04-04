@@ -218,11 +218,11 @@
     <!-- Row 1: Enclosure photos -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="housing day test.jpg" alt="HAP payload enclosure closed" style="aspect-ratio:4/3;object-fit:cover;">
+        <img src="housing%20day%20test.jpg" alt="HAP payload enclosure closed" style="aspect-ratio:4/3;object-fit:cover;">
         <div class="media-caption"><strong>Fig 1. HAP Payload — Final Enclosure.</strong> The completed 3D-printed ASA enclosure housing the full communications payload. LoRa and HaLow client devices visible in front. Total assembled mass: 591 g, well within the 2 kg target.</div>
       </div>
       <div class="media-item">
-        <img src="housing day test open.jpg" alt="HAP enclosure open showing internals" style="aspect-ratio:4/3;object-fit:cover;">
+        <img src="housing%20day%20test%20open.jpg" alt="HAP enclosure open showing internals" style="aspect-ratio:4/3;object-fit:cover;">
         <div class="media-caption"><strong>Fig 2. Enclosure Interior — Modular Layout.</strong> Internal view showing the Raspberry Pi compute module, SIM7670G LTE modem, HaLow transceiver, and LoRa module mounted on the payload tray. Designed for modularity — any radio can be removed independently.</div>
       </div>
     </div>
@@ -230,11 +230,11 @@
     <!-- Row 2: System diagrams -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="HAP breakdown simple.png" alt="Simple system breakdown diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="HAP%20breakdown%20simple.png" alt="Simple system breakdown diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
         <div class="media-caption"><strong>Fig 3. System Overview.</strong> High-level breakdown of the HAP communications platform showing the three independent radio links — LoRa for long-range, HaLow for local high-bandwidth, and LTE for internet backhaul.</div>
       </div>
       <div class="media-item">
-        <img src="Network Diagram.png" alt="Full network architecture diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="Network%20Diagram.png" alt="Full network architecture diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
         <div class="media-caption"><strong>Fig 4. Full Network Architecture.</strong> Complete system topology showing LTE WAN backhaul, Wi-Fi HaLow IP links, LoRa Reticulum transport layer, and client device connections. The Reticulum stack handles routing across all three radio interfaces simultaneously.</div>
       </div>
     </div>
@@ -242,11 +242,11 @@
     <!-- Row 3: Test results graphs -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="SNR graph.png" alt="SNR vs distance graph" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="SNR%20graph.png" alt="SNR vs distance graph" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
         <div class="media-caption"><strong>Fig 5. SNR vs. Distance — LoRa Range Test.</strong> Signal-to-noise ratio across all six test locations in Kelowna, BC. General trend follows expected inverse relationship with distance. The sharp dip at ~3.2 km corresponds to Test Point 4, where a semi-direct path with terrain obstructions severely attenuated the signal despite similar range to Test Point 5.</div>
       </div>
       <div class="media-item">
-        <img src="map test with numbers final.png" alt="Geographic test coverage map" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:8px;">
+        <img src="map%20test%20with%20numbers%20final.png" alt="Geographic test coverage map" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:8px;">
         <div class="media-caption"><strong>Fig 6. Geographic Test Coverage — Kelowna, BC.</strong> Satellite map showing all six LoRa test locations with distance rings from the transmitter base. Marker colors encode signal quality: green = strong (&gt;5 dB SNR), yellow = fair (0–5 dB), pink = poor (&lt;0 dB). The red marker at 11.5 km marks the failed LoRa-to-HAP integration test.</div>
       </div>
     </div>
@@ -254,11 +254,11 @@
     <!-- Row 4: HaLow + elevation -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="HaLow speed.png" alt="End-to-end speed test result" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <img src="HaLow%20speed.png" alt="End-to-end speed test result" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
         <div class="media-caption"><strong>Fig 7. End-to-End Speed Test — Ookla Speedtest.</strong> Full chain validation: iPhone 15 Pro Max → Wi-Fi HaLow → Raspberry Pi → LTE → Internet via Rogers Wireless. Achieved 0.39 Mbps download and 0.45 Mbps upload — far exceeding the ≥2 kbps design requirement (R2) and confirming the core HAPS relay use case.</div>
       </div>
       <div class="media-item">
-        <img src="elevation plot.png" alt="Elevation and signal profile" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <img src="elevation%20plot.png" alt="Elevation and signal profile" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
         <div class="media-caption"><strong>Fig 8. Signal Health and Elevation Profile.</strong> Top panel: SNR (green) and RSSI (blue) vs. distance. Bottom panel: terrain elevation profile with SNR color-coded at each receiver location. Test points 4 and 5, located 255–310 m above the transmitter, partially simulate the altitude differential expected in a real high-altitude deployment.</div>
       </div>
     </div>
@@ -266,7 +266,7 @@
     <!-- YouTube video -->
     <div class="media-item">
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/TgwNfmWZQmM" title="HAPS Project Video" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/TgwNfmWZQmM" title="HAPS Project Video" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
       <div class="media-caption"><strong>Project Video.</strong> Overview of the HAPS communications payload — design process, prototype build, and field testing results in Kelowna, BC.</div>
     </div>
@@ -504,31 +504,31 @@
     <div class="media-label">AWR Simulation Results</div>
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="Chosen resistor new.png" alt="AWR input impedance via-to-ground resistor" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="Chosen%20resistor%20new.png" alt="AWR input impedance via-to-ground resistor" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 1. Termination Resistor — Via-to-Ground Approximation.</strong> Real and imaginary parts of input impedance (Z11) after applying the via-to-ground workaround. AWR cannot place a lumped resistor directly inside an EM structure — this via approximation was engineered as a practical solution to introduce the termination loss required for travelling-wave operation.</div>
       </div>
       <div class="media-item">
-        <img src="length chosen.png" alt="AWR antenna length impedance vs frequency" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="length%20chosen.png" alt="AWR antenna length impedance vs frequency" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 2. Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length. The length was iterated until the impedance characteristic showed flat, resistive behaviour across the band — confirming a properly terminated travelling-wave antenna rather than a resonant structure.</div>
       </div>
     </div>
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="reflection bandwidth low points.png" alt="AWR return loss low points" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="reflection%20bandwidth%20low%20points.png" alt="AWR return loss low points" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 3. Reflection Bandwidth — Minimum Return Loss Points.</strong> S11 in dB showing the frequency bands of best impedance match after geometry tuning. The marked valley frequencies identify where power transfer into the antenna is maximized — lower return loss means less reflected power.</div>
       </div>
       <div class="media-item">
-        <img src="reflection bandwidths.png" alt="AWR broadband reflection sweep" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="reflection%20bandwidths.png" alt="AWR broadband reflection sweep" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 4. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss across the complete simulation range. Multiple matched bands are visible — consistent with the electrically long travelling-wave structure. The design was tuned to align useful matched regions with the scaled equivalent of the target HF operating frequencies.</div>
       </div>
     </div>
     <div class="media-grid cols-2">
       <div class="media-item">
-        <img src="XZ plane E field.png" alt="XZ plane E field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="XZ%20plane%20E%20field.png" alt="XZ plane E field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 5. XZ Plane — E Field Radiation Pattern.</strong> Azimuthal polar cut confirming the Beverage antenna's characteristic end-fire directivity. The main lobe points along the wire axis, validating that the design achieves the intended beam direction. This directional gain is the defining property that makes the Beverage antenna effective for receiving distant HF stations from a specific geographic region.</div>
       </div>
       <div class="media-item">
-        <img src="YZ plane H field.png" alt="YZ plane H field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="YZ%20plane%20H%20field.png" alt="YZ plane H field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
         <div class="media-caption"><strong>Fig 6. YZ Plane — H Field Radiation Pattern.</strong> Elevation polar cut confirming low-angle radiation — the other critical property of the Beverage antenna. The pattern peaks at low elevation angles, enabling reception of low-elevation sky-wave and ground-wave HF signals from distant transmitters, rather than local near-vertical signals.</div>
       </div>
     </div>
