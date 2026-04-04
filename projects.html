@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Engineering Portfolio</title>
+<title>Projects — Abdulaziz AlHumaid</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0d0d0d; --bg2:#141414; --bg3:#1a1a1a; --orange:#e8651a; --orange-glow:rgba(232,101,26,0.12); --gray:#8a8a8a; --gray-light:#c0c0c0; --white:#f0ece6; --border:rgba(232,101,26,0.2); }
+  :root{--bg:#0d0d0d;--bg2:#141414;--bg3:#1a1a1a;--orange:#e8651a;--orange-glow:rgba(232,101,26,0.12);--gray:#8a8a8a;--gray-light:#c0c0c0;--white:#f0ece6;--border:rgba(232,101,26,0.2);}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   *{cursor:none!important;}
   #cursor{position:fixed;width:12px;height:12px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
@@ -31,82 +31,80 @@
   .page-header-label::before{content:'';width:32px;height:1px;background:var(--orange);}
   .page-header h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(48px,7vw,88px);line-height:1.0;letter-spacing:-0.02em;}
 
-  .proj-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);padding:0 48px;position:sticky;top:64px;background:rgba(13,13,13,0.96);backdrop-filter:blur(12px);z-index:50;overflow-x:auto;}
-  .proj-tab{padding:18px 24px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+  .proj-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 48px;position:sticky;top:64px;background:rgba(13,13,13,0.97);backdrop-filter:blur(14px);z-index:50;overflow-x:auto;}
+  .proj-tab{padding:18px 20px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
   .proj-tab:hover{color:var(--orange);}
   .proj-tab.active{color:var(--orange);border-color:var(--orange);}
 
-  .project-section{padding:100px 48px;border-bottom:1px solid var(--border);}
+  .project-section{padding:90px 48px;border-bottom:1px solid var(--border);}
   .project-section:last-child{border-bottom:none;}
 
-  .proj-meta{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;margin-bottom:60px;}
+  .proj-meta{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;margin-bottom:56px;}
   .proj-course{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
-  .proj-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.1;}
+  .proj-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(26px,4vw,46px);line-height:1.1;}
   .proj-period{font-size:12px;color:var(--gray);margin-top:8px;}
   .proj-meta-right{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-end;}
   .tag{padding:6px 14px;border:1px solid var(--border);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);opacity:0.85;}
 
-  .proj-story{display:grid;grid-template-columns:2fr 1fr;gap:60px;align-items:start;margin-bottom:60px;}
+  .proj-story{display:grid;grid-template-columns:2fr 1fr;gap:56px;align-items:start;margin-bottom:56px;}
   .story-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
   .story-body{color:var(--gray-light);font-size:14px;line-height:1.9;}
   .story-body p{margin-bottom:16px;}
   .story-body strong{color:var(--white);}
 
   .spec-table{background:var(--bg2);}
-  .spec-table-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);padding:20px 24px 16px;border-bottom:1px solid var(--border);}
-  .spec-row{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .spec-table-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);padding:18px 22px 14px;border-bottom:1px solid var(--border);}
+  .spec-row{display:flex;justify-content:space-between;align-items:center;padding:11px 22px;border-bottom:1px solid rgba(255,255,255,0.04);}
   .spec-row:last-child{border-bottom:none;}
   .spec-key{font-size:12px;color:var(--gray);}
-  .spec-val{font-size:13px;color:var(--white);}
+  .spec-val{font-size:12px;color:var(--white);}
   .spec-val.good{color:#4caf82;}
   .spec-val.orange{color:var(--orange);}
 
-  .media-section{margin-top:60px;}
-  .media-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+  .media-section{margin-top:56px;}
+  .media-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);}
   .media-grid{display:grid;gap:2px;}
   .media-grid.cols-2{grid-template-columns:1fr 1fr;}
   .media-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  .media-grid.cols-4{grid-template-columns:1fr 1fr 1fr 1fr;}
   .media-item{background:var(--bg2);overflow:hidden;}
-  .media-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease,filter 0.3s;filter:brightness(0.88) saturate(0.8);}
+  .media-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s,filter 0.3s;filter:brightness(0.88) saturate(0.85);}
   .media-item:hover img{transform:scale(1.03);filter:brightness(1) saturate(1);}
-  .media-caption{padding:16px 20px;background:var(--bg3);font-size:12px;color:var(--gray);line-height:1.5;}
+  .media-caption{padding:14px 18px;background:var(--bg3);font-size:12px;color:var(--gray);line-height:1.5;}
   .media-caption strong{color:var(--gray-light);}
 
-  /* Placeholder style for images not yet uploaded */
-  .img-placeholder{width:100%;aspect-ratio:16/10;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px dashed rgba(232,101,26,0.25);}
-  .img-placeholder span{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);}
-
-  /* Video embed */
   .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--bg3);}
   .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
 
-  .iteration-timeline{margin:60px 0;}
-  .iter-title{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:32px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+  .iteration-timeline{margin:56px 0;}
+  .iter-title{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--border);}
   .iter-items{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-  .iter-item{background:var(--bg2);padding:32px;position:relative;border-top:3px solid transparent;transition:border-color 0.3s;}
+  .iter-item{background:var(--bg2);padding:28px;position:relative;border-top:3px solid transparent;transition:border-color 0.3s;}
   .iter-item:hover{border-color:var(--orange);}
-  .iter-num{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:var(--orange);opacity:0.1;position:absolute;top:16px;right:20px;}
-  .iter-stage{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
-  .iter-name{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;}
+  .iter-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:var(--orange);opacity:0.1;position:absolute;top:14px;right:18px;}
+  .iter-stage{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
+  .iter-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:10px;}
   .iter-desc{font-size:13px;color:var(--gray);line-height:1.7;}
 
-  .results-table{width:100%;border-collapse:collapse;margin-top:40px;}
-  .results-table th{text-align:left;padding:12px 20px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);background:var(--bg2);border-bottom:1px solid var(--border);}
-  .results-table td{padding:14px 20px;font-size:13px;color:var(--gray-light);border-bottom:1px solid rgba(255,255,255,0.04);}
+  .results-table{width:100%;border-collapse:collapse;margin-top:32px;}
+  .results-table th{text-align:left;padding:11px 18px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);background:var(--bg2);border-bottom:1px solid var(--border);}
+  .results-table td{padding:12px 18px;font-size:13px;color:var(--gray-light);border-bottom:1px solid rgba(255,255,255,0.04);}
   .results-table tr:hover td{background:var(--bg2);}
-  .badge{display:inline-block;padding:3px 10px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+  .badge{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
   .badge-met{background:rgba(76,175,130,0.15);color:#4caf82;border:1px solid rgba(76,175,130,0.3);}
   .badge-partial{background:rgba(232,101,26,0.12);color:var(--orange);border:1px solid var(--border);}
 
-  .info-note{margin-top:16px;padding:14px 20px;background:var(--bg2);border-left:3px solid rgba(232,101,26,0.4);font-size:12px;color:var(--gray);line-height:1.6;}
+  .info-note{margin-top:12px;padding:12px 18px;background:var(--bg2);border-left:3px solid rgba(232,101,26,0.35);font-size:12px;color:var(--gray);line-height:1.6;}
   .info-note em{color:var(--gray-light);}
+  code{color:var(--orange);font-size:11px;}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
   .reveal.visible{opacity:1;transform:none;}
 
   footer{padding:24px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:11px;color:var(--gray);letter-spacing:0.1em;}
 
-  @media(max-width:768px){nav,.page-header,.project-section{padding-left:24px;padding-right:24px;}.proj-tabs{padding:0 24px;}.proj-story{grid-template-columns:1fr;}.iter-items{grid-template-columns:1fr;}.media-grid.cols-2,.media-grid.cols-3{grid-template-columns:1fr;}}
+  @media(max-width:900px){.media-grid.cols-4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:768px){nav,.page-header,.project-section{padding-left:24px;padding-right:24px;}.proj-tabs{padding:0 24px;}.proj-story{grid-template-columns:1fr;}.iter-items{grid-template-columns:1fr;}.media-grid.cols-2,.media-grid.cols-3,.media-grid.cols-4{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -114,7 +112,7 @@
 <div id="cursor-ring"></div>
 
 <nav>
-  <a href="index.html" class="nav-logo">ENG<span>.</span>FOLIO</a>
+  <a href="index.html" class="nav-logo">AlHumaid<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html">About</a></li>
     <li><a href="projects.html" class="active">Projects</a></li>
@@ -133,6 +131,7 @@
   <a href="#ppg" class="proj-tab">03 — PPG Sensor</a>
   <a href="#vlsi" class="proj-tab">04 — VLSI Adder</a>
   <a href="#antenna" class="proj-tab">05 — Antenna</a>
+  <a href="#flyback" class="proj-tab">06 — Flyback</a>
 </div>
 
 
@@ -153,9 +152,9 @@
     <div class="story-text">
       <div class="story-label">The Challenge</div>
       <div class="story-body">
-        <p>When conventional infrastructure fails — in remote regions or during disasters — people lose communication. Our client, Dr. Anas Chaaban at UBCO, challenged us to build a proof-of-concept wireless relay payload that could be lifted on a high-altitude balloon to restore emergency connectivity.</p>
-        <p>The result is a <strong>multi-protocol communications platform</strong> integrating LoRa, Wi-Fi HaLow, and LTE on a single modular Raspberry Pi-based payload — 591 g, under $375 CAD, with up to 5 hours of battery runtime. I contributed to LoRa module testing, enclosure development, 3D printing, and final system assembly and integration.</p>
-        <p>The system operates in the 915 MHz ISM band under ISED licence-exempt regulations. The software stack runs the <strong>Reticulum network protocol</strong> for routing and LXMF for messaging — allowing reliable low-bandwidth communication even across multiple radio hops.</p>
+        <p>When conventional infrastructure fails — in remote regions or during disasters — people lose communication. Our client, Dr. Anas Chaaban at UBCO, challenged our team to build a proof-of-concept wireless relay payload suitable for a high-altitude balloon platform.</p>
+        <p>The result is a <strong>modular multi-protocol communications system</strong> integrating LoRa, Wi-Fi HaLow, and LTE on a single Raspberry Pi-based payload — 591 g, under $375 CAD, ~5 hours of battery runtime. The software runs the <strong>Reticulum network stack</strong> for routing and LXMF for messaging, enabling reliable low-bandwidth communication across multiple radio hops. I contributed to LoRa testing, enclosure development, 3D printing, and final integration.</p>
+        <p>Field testing across six locations in Kelowna, BC validated a <strong>5.4 km LoRa link</strong> at 75% link quality, and the full end-to-end internet chain (Client → HaLow → HAP → LTE → Internet) was verified with a live speed test.</p>
       </div>
     </div>
     <div class="story-sidebar">
@@ -165,127 +164,117 @@
         <div class="spec-row"><span class="spec-key">HaLow Throughput</span><span class="spec-val good">4,929 kbps ✓</span></div>
         <div class="spec-row"><span class="spec-key">Payload Mass</span><span class="spec-val good">591 g ✓</span></div>
         <div class="spec-row"><span class="spec-key">Battery Runtime</span><span class="spec-val good">~5 hours ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Total BOM Cost</span><span class="spec-val good">$375.14 CAD ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Internet Speed</span><span class="spec-val">0.39 / 0.45 Mbps</span></div>
+        <div class="spec-row"><span class="spec-key">BOM Cost</span><span class="spec-val good">$375.14 CAD ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Download / Upload</span><span class="spec-val">0.39 / 0.45 Mbps</span></div>
         <div class="spec-row"><span class="spec-key">Spectrum</span><span class="spec-val">915 MHz ISM</span></div>
       </div>
     </div>
   </div>
 
-  <!-- DESIGN ITERATIONS -->
   <div class="iteration-timeline reveal">
     <div class="iter-title">Design Evolution</div>
     <div class="iter-items">
       <div class="iter-item">
         <div class="iter-num">1</div>
         <div class="iter-stage">MVP Baseline</div>
-        <div class="iter-name">LoRa-Only Core</div>
-        <div class="iter-desc">Established the foundational long-range link using LoRa 915 MHz on a Raspberry Pi via the Reticulum stack. Validated bidirectional messaging. Became the non-negotiable backbone of all further iterations.</div>
+        <div class="iter-name">LoRa Core</div>
+        <div class="iter-desc">Raspberry Pi running Reticulum with a LoRa 915 MHz transceiver. Validated bidirectional messaging — the non-negotiable backbone for all further iterations.</div>
       </div>
       <div class="iter-item">
         <div class="iter-num">2</div>
         <div class="iter-stage">Iteration 2</div>
         <div class="iter-name">+ Wi-Fi HaLow</div>
-        <div class="iter-desc">Added Morse Micro MM6108 HaLow module for higher-bandwidth local connectivity. Required custom Linux kernel driver compilation. Achieved ~4.9 Mbps — exceeding the 2 kbps design requirement by over 2,000×.</div>
+        <div class="iter-desc">Added Morse Micro MM6108 HaLow module requiring custom kernel driver compilation. Achieved ~4.9 Mbps indoors — exceeding the 2 kbps target by over 2,000×.</div>
       </div>
       <div class="iter-item">
         <div class="iter-num">3</div>
         <div class="iter-stage">Final Design</div>
         <div class="iter-name">+ LTE Backhaul</div>
-        <div class="iter-desc">Added SIM7670G LTE modem for internet backhaul. Validated full chain: Client → HaLow → HAP → LTE → Internet, achieving 0.39 Mbps download — sufficient for emergency text communication.</div>
+        <div class="iter-desc">SIM7670G LTE modem completed the relay chain. Full internet access validated: Client → HaLow → HAP → LTE → Internet at 0.39 Mbps down.</div>
       </div>
     </div>
   </div>
 
   <!-- RANGE TEST TABLE -->
   <div class="reveal">
-    <div class="media-label">LoRa Range Test Results — Kelowna, BC</div>
+    <div class="media-label">LoRa Field Test Results — Kelowna, BC</div>
     <table class="results-table">
-      <thead><tr><th>Test #</th><th>Distance</th><th>SNR (dB)</th><th>RSSI (dBm)</th><th>Link Quality</th><th>Path</th></tr></thead>
+      <thead><tr><th>Test</th><th>Distance</th><th>SNR (dB)</th><th>RSSI (dBm)</th><th>Link Quality</th><th>Condition</th></tr></thead>
       <tbody>
         <tr><td>1</td><td>95 m</td><td>12.0</td><td>−82</td><td><span class="badge badge-met">100%</span></td><td>Direct LOS</td></tr>
         <tr><td>2</td><td>324 m</td><td>7.8</td><td>−120</td><td><span class="badge badge-met">100%</span></td><td>Direct LOS</td></tr>
-        <tr><td>3</td><td>1.07 km</td><td>3.2</td><td>−116</td><td><span class="badge badge-met">81.7%</span></td><td>Trees in path</td></tr>
+        <tr><td>3</td><td>1.07 km</td><td>3.2</td><td>−116</td><td><span class="badge badge-met">81.7%</span></td><td>Trees</td></tr>
         <tr><td>4</td><td>3.22 km</td><td>−5.2</td><td>−120</td><td><span class="badge badge-partial">0.25%</span></td><td>Semi-direct</td></tr>
         <tr><td>5</td><td>3.44 km</td><td>−0.5</td><td>−118</td><td><span class="badge badge-met">56.7%</span></td><td>Direct LOS</td></tr>
-        <tr><td>6</td><td>5.45 km</td><td>2.2</td><td>−117</td><td><span class="badge badge-met">75%</span></td><td>Direct LOS ✓</td></tr>
+        <tr><td>6</td><td>5.45 km</td><td>2.2</td><td>−117</td><td><span class="badge badge-met">75% ✓</span></td><td>Direct LOS</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- PHOTOS & VIDEO -->
+  <!-- PHOTOS -->
   <div class="media-section reveal">
-    <div class="media-label">Prototype Photos & Video</div>
+    <div class="media-label">Prototype — Hardware & Field Testing</div>
 
-    <!-- Photo row: HAP enclosure + ground clients -->
+    <!-- Row 1: Enclosure photos -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <!-- REPLACE src with your actual image filename, e.g. "hap_enclosure.jpg" -->
-        <div class="img-placeholder" style="aspect-ratio:4/3;">
-          <span>📷 HAP Enclosure Photo</span>
-          <span style="font-size:10px;color:rgba(138,138,138,0.5);">Replace with your photo</span>
-        </div>
-        <div class="media-caption"><strong>Final HAP Payload with Enclosure.</strong> 3D-printed ASA enclosure housing the Raspberry Pi, LoRa module, HaLow transceiver, and LTE modem. Total mass: 591 g.</div>
+        <img src="housing_day_test.jpg" alt="HAP payload enclosure closed" style="aspect-ratio:4/3;object-fit:cover;">
+        <div class="media-caption"><strong>HAP Payload — Final Enclosure.</strong> 3D-printed housing with LoRa and HaLow client devices. Total assembled mass: 591 g.</div>
       </div>
       <div class="media-item">
-        <!-- REPLACE src with your actual image filename, e.g. "ground_clients.jpg" -->
-        <div class="img-placeholder" style="aspect-ratio:4/3;">
-          <span>📷 Ground Client Devices</span>
-          <span style="font-size:10px;color:rgba(138,138,138,0.5);">Replace with your photo</span>
-        </div>
-        <div class="media-caption"><strong>Ground Client Devices.</strong> LoRa handheld client (left) and Wi-Fi HaLow bridge device (right) used during field testing in Kelowna, BC.</div>
+        <img src="housing_day_test_open.jpg" alt="HAP enclosure open showing internals" style="aspect-ratio:4/3;object-fit:cover;">
+        <div class="media-caption"><strong>Enclosure Interior.</strong> Raspberry Pi, LTE modem, and radio modules mounted in the modular payload bay.</div>
       </div>
     </div>
 
-    <!-- YouTube video embed -->
-    <div class="media-item" style="margin-bottom:2px;">
-      <div class="video-wrap">
-        <!-- REPLACE the src URL with your actual YouTube embed link -->
-        <!-- Format: https://www.youtube.com/embed/YOUR_VIDEO_ID -->
-        <div style="width:100%;height:100%;min-height:300px;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
-          <div style="font-size:32px;opacity:0.3;">▶</div>
-          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);">Project Video</div>
-          <div style="font-size:12px;color:var(--gray);max-width:400px;text-align:center;">Replace this block with your YouTube embed. Change the div above to:<br><br><code style="color:var(--orange);font-size:11px;">&lt;iframe src="https://www.youtube.com/embed/YOUR_ID"&gt;&lt;/iframe&gt;</code></div>
-        </div>
+    <!-- Row 2: System diagrams -->
+    <div class="media-grid cols-2" style="margin-bottom:2px;">
+      <div class="media-item">
+        <img src="HAP_breakdown_simple.png" alt="Simple system breakdown diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <div class="media-caption"><strong>System Overview (Non-Technical).</strong> Simple breakdown of the HAP communication platform and its three radio links.</div>
       </div>
-      <div class="media-caption"><strong>Project Video.</strong> Overview of the HAPS communications payload — design process, prototype assembly, and field testing results in Kelowna, BC.</div>
+      <div class="media-item">
+        <img src="Network_Diagram.png" alt="Full network architecture diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <div class="media-caption"><strong>Full Network Architecture.</strong> LTE backhaul, HaLow IP link, and LoRa Reticulum transport layer shown in context.</div>
+      </div>
     </div>
 
-    <!-- Architecture diagram (inline SVG — always works, no file needed) -->
+    <!-- Row 3: Test results graphs -->
+    <div class="media-grid cols-2" style="margin-bottom:2px;">
+      <div class="media-item">
+        <img src="SNR_graph.png" alt="SNR vs distance graph" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <div class="media-caption"><strong>SNR vs. Distance.</strong> Signal strength across six test locations. Dip at 3.2 km reflects a semi-direct path with obstructions.</div>
+      </div>
+      <div class="media-item">
+        <img src="map_test_with_numbers_final.png" alt="Geographic test coverage map" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>Geographic Test Coverage — Kelowna, BC.</strong> Colored markers show signal quality at each LoRa test point. Green = strong, yellow = fair, red = failed.</div>
+      </div>
+    </div>
+
+    <!-- Row 4: HaLow + speed test -->
+    <div class="media-grid cols-2" style="margin-bottom:2px;">
+      <div class="media-item">
+        <img src="HaLow_speed.png" alt="End-to-end speed test result" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <div class="media-caption"><strong>Ookla Speedtest — Full Chain.</strong> Client → HaLow → HAP → LTE → Internet. 0.39 Mbps down, well above the ≥2 kbps requirement.</div>
+      </div>
+      <div class="media-item">
+        <img src="elevation_plot.png" alt="Elevation and signal profile" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <div class="media-caption"><strong>Signal & Elevation Profile.</strong> SNR and RSSI vs. distance overlaid with terrain elevation. Test points 4–5 at ~250–310 m above transmitter.</div>
+      </div>
+    </div>
+
+    <!-- YouTube video -->
     <div class="media-item">
-      <div style="width:100%;background:var(--bg3);padding:40px 32px;">
-        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:24px;">System Architecture Diagram</div>
-        <svg viewBox="0 0 640 160" style="width:100%;max-width:600px;" xmlns="http://www.w3.org/2000/svg">
-          <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e8651a" opacity="0.7"/></marker></defs>
-          <rect x="230" y="56" width="180" height="56" rx="2" fill="#1a1a1a" stroke="#e8651a" stroke-width="1.5"/>
-          <text x="320" y="80" text-anchor="middle" fill="#e8651a" font-size="10" font-family="DM Mono" letter-spacing="1">HAP PAYLOAD</text>
-          <text x="320" y="96" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">Raspberry Pi · Reticulum</text>
-          <rect x="20" y="30" width="120" height="40" rx="2" fill="#141414" stroke="rgba(232,101,26,0.4)" stroke-width="1"/>
-          <text x="80" y="47" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">LoRa Client</text>
-          <text x="80" y="62" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">915 MHz · 5.4 km</text>
-          <line x1="142" y1="50" x2="228" y2="76" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
-          <rect x="20" y="98" width="120" height="40" rx="2" fill="#141414" stroke="rgba(232,101,26,0.4)" stroke-width="1"/>
-          <text x="80" y="115" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">HaLow Client</text>
-          <text x="80" y="130" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">Sub-1GHz · 4.9 Mbps</text>
-          <line x1="142" y1="118" x2="228" y2="96" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
-          <rect x="500" y="64" width="120" height="40" rx="2" fill="#141414" stroke="rgba(232,101,26,0.4)" stroke-width="1"/>
-          <text x="560" y="81" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">LTE Internet</text>
-          <text x="560" y="96" text-anchor="middle" fill="#8a8a8a" font-size="8" font-family="DM Mono">SIM7670G</text>
-          <line x1="412" y1="84" x2="498" y2="84" stroke="#e8651a" stroke-width="1" opacity="0.6" marker-end="url(#arr)"/>
-          <text x="162" y="46" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">5.4 km LOS</text>
-          <text x="162" y="120" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">~4.9 Mbps</text>
-          <text x="428" y="78" fill="#e8651a" font-size="8" font-family="DM Mono" opacity="0.7">Backhaul</text>
-        </svg>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/TgwNfmWZQmM" title="HAPS Project Video" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
-      <div class="media-caption"><strong>HAPS Network Architecture.</strong> Three independent RF protocols on one payload: LoRa (long-range), HaLow (local high-bandwidth), and LTE (internet backhaul).</div>
+      <div class="media-caption"><strong>Project Video.</strong> Overview of the HAPS communications payload — design process, prototype build, and field testing results in Kelowna, BC.</div>
     </div>
-
-    <div class="info-note"><em>To add your own photos: upload your image files to your GitHub repo in the same folder as the HTML files. Then replace the placeholder divs with: <code>&lt;img src="your-filename.jpg" alt="description"&gt;</code></em></div>
   </div>
 </section>
 
 
-<!-- ===== 02 BLDC MOTOR ===== -->
+<!-- ===== 02 BLDC ===== -->
 <section class="project-section" id="bldc">
   <div class="proj-meta reveal">
     <div class="proj-meta-left">
@@ -297,51 +286,33 @@
       <span class="tag">STM32</span><span class="tag">KiCad</span><span class="tag">FOC</span><span class="tag">3D Printing</span>
     </div>
   </div>
-
   <div class="proj-story reveal">
     <div class="story-text">
       <div class="story-label">The Project</div>
       <div class="story-body">
-        <p>Our group designed and built a custom <strong>outrunner brushless DC motor</strong> and programmable controller entirely from scratch — mechanically, electrically, and in firmware. The goal was to develop hands-on understanding of the full motor drive chain, from electromagnetic geometry to commutation algorithms.</p>
-        <p>The motor features a 3D-printed rotor shell and stator former, a three-phase wye-wound stator, and a permanent-magnet rotor. As a team, we also developed a <strong>KiCad PCB and STM32 firmware</strong> implementing sensorless field-oriented control (FOC), enabling smooth and controllable operation during bench testing without hall-effect sensors.</p>
-        <p>My personal contributions focused on <strong>controller testing and design assistance</strong> — validating the drive electronics, debugging commutation issues, and contributing to the firmware tuning process that brought the prototype to a working test-ready state.</p>
+        <p>Our group designed and built a custom <strong>outrunner brushless DC motor</strong> and programmable controller from scratch — mechanically, electrically, and in firmware. The goal was to develop hands-on understanding of the full motor drive chain, from electromagnetic geometry through commutation to smooth output torque.</p>
+        <p>The motor features a 3D-printed rotor shell and stator, a three-phase wye-wound stator, and a permanent-magnet rotor. The team developed a <strong>KiCad PCB and STM32 firmware</strong> implementing sensorless field-oriented control (FOC). My personal contributions were in <strong>controller testing and design assistance</strong> — validating the drive electronics, debugging commutation behavior, and contributing to the firmware tuning that brought the prototype to a running state.</p>
       </div>
     </div>
     <div class="story-sidebar">
       <div class="spec-table">
-        <div class="spec-table-title">System Overview</div>
+        <div class="spec-table-title">System Summary</div>
         <div class="spec-row"><span class="spec-key">Motor Type</span><span class="spec-val">Outrunner BLDC</span></div>
-        <div class="spec-row"><span class="spec-key">Stator</span><span class="spec-val">3-phase Wye-wound</span></div>
+        <div class="spec-row"><span class="spec-key">Stator</span><span class="spec-val">3-phase Wye</span></div>
         <div class="spec-row"><span class="spec-key">Rotor</span><span class="spec-val">Permanent Magnet</span></div>
-        <div class="spec-row"><span class="spec-key">Control Method</span><span class="spec-val orange">Sensorless FOC</span></div>
+        <div class="spec-row"><span class="spec-key">Control</span><span class="spec-val orange">Sensorless FOC</span></div>
         <div class="spec-row"><span class="spec-key">MCU</span><span class="spec-val">STM32</span></div>
-        <div class="spec-row"><span class="spec-key">PCB Tool</span><span class="spec-val">KiCad</span></div>
-        <div class="spec-row"><span class="spec-key">Structure</span><span class="spec-val">FDM 3D Printed</span></div>
+        <div class="spec-row"><span class="spec-key">PCB</span><span class="spec-val">KiCad</span></div>
+        <div class="spec-row"><span class="spec-key">My Role</span><span class="spec-val">Testing + Design</span></div>
       </div>
     </div>
   </div>
-
   <div class="iteration-timeline reveal">
     <div class="iter-title">Build Process</div>
     <div class="iter-items">
-      <div class="iter-item">
-        <div class="iter-num">1</div>
-        <div class="iter-stage">Mechanical</div>
-        <div class="iter-name">Motor Assembly</div>
-        <div class="iter-desc">3D-printed outrunner shell and stator former. Three-phase stator wound by hand — winding symmetry directly determines back-EMF quality. Iterated on core alignment and air-gap closure to reach a test-ready prototype.</div>
-      </div>
-      <div class="iter-item">
-        <div class="iter-num">2</div>
-        <div class="iter-stage">Electrical</div>
-        <div class="iter-name">PCB Design</div>
-        <div class="iter-desc">Designed the three-phase inverter board in KiCad — gate drivers, bootstrap circuits, bulk capacitance, and MCU headers. Careful attention to switching loop minimization and thermal layout to manage MOSFET dissipation.</div>
-      </div>
-      <div class="iter-item">
-        <div class="iter-num">3</div>
-        <div class="iter-stage">Firmware & Test</div>
-        <div class="iter-name">Sensorless FOC</div>
-        <div class="iter-desc">Implemented sensorless FOC in C on STM32 — estimating rotor position from back-EMF zero-crossings, then applying space-vector PWM. My role focused on controller testing and debugging commutation to achieve smooth bench operation.</div>
-      </div>
+      <div class="iter-item"><div class="iter-num">1</div><div class="iter-stage">Mechanical</div><div class="iter-name">Motor Assembly</div><div class="iter-desc">3D-printed outrunner shell and stator. Hand-wound three-phase coils — symmetry directly determines back-EMF quality. Iterated on air-gap closure to reach a test-ready prototype.</div></div>
+      <div class="iter-item"><div class="iter-num">2</div><div class="iter-stage">Electrical</div><div class="iter-name">PCB Design</div><div class="iter-desc">Three-phase inverter board in KiCad — gate drivers, bootstrap circuits, bulk capacitors, MCU headers. Careful attention to high-current switching loop minimization.</div></div>
+      <div class="iter-item"><div class="iter-num">3</div><div class="iter-stage">Firmware & Test</div><div class="iter-name">Sensorless FOC</div><div class="iter-desc">STM32 firmware estimating rotor position from back-EMF zero-crossings, then applying space-vector PWM. I contributed to bench testing and debugging to achieve stable operation.</div></div>
     </div>
   </div>
 </section>
@@ -359,61 +330,47 @@
       <span class="tag">Analog Design</span><span class="tag">LTSpice</span><span class="tag">TIA</span><span class="tag">Biomedical</span>
     </div>
   </div>
-
   <div class="proj-story reveal">
     <div class="story-text">
       <div class="story-label">The Challenge</div>
       <div class="story-body">
-        <p>Photoplethysmography (PPG) measures heart rate by detecting microscopic variations in reflected light caused by pulsing blood volume. The signal is tiny — riding on a large DC offset from ambient light — and must be extracted reliably by a circuit designed with care at every stage.</p>
-        <p>I designed the complete analog signal chain from photodiode to digital pulse output. The chain begins with a <strong>transimpedance amplifier (TIA)</strong> to convert photodiode current into voltage, followed by AC-coupled amplification to lift the AC cardiac signal above the DC bias, an active bandpass filter targeting 0.5–5 Hz, a <strong>Schmitt trigger comparator</strong> for hysteresis and clean edge detection, and a one-shot pulse shaper for a uniform digital output.</p>
-        <p>The entire design was developed using hand calculations, then verified in <strong>LTSpice simulation</strong>, then confirmed to match on breadboard — a clean simulation-to-hardware workflow that gave me strong confidence in the final result.</p>
+        <p>PPG sensors measure heart rate by detecting microscopic variations in reflected light from pulsing blood — but the signal is tiny and rides on a large DC offset from ambient light. Extracting a reliable pulse requires a carefully designed analog chain at every stage.</p>
+        <p>I designed the complete signal path from photodiode to digital pulse output: a <strong>transimpedance amplifier (TIA)</strong> to convert photodiode current to voltage, AC-coupled amplification to block the DC offset, an active bandpass filter targeting 0.5–5 Hz, a <strong>Schmitt trigger comparator</strong> for hysteresis and edge detection, and a one-shot pulse shaper for a clean digital output.</p>
+        <p>The design used hand calculations → LTSpice simulation → breadboard verification, confirming that simulation matched real hardware behavior.</p>
       </div>
     </div>
     <div class="story-sidebar">
       <div class="spec-table">
-        <div class="spec-table-title">Signal Chain Stages</div>
+        <div class="spec-table-title">Signal Chain</div>
         <div class="spec-row"><span class="spec-key">Stage 1</span><span class="spec-val">Photodiode + LED</span></div>
-        <div class="spec-row"><span class="spec-key">Stage 2</span><span class="spec-val">Transimpedance Amp</span></div>
-        <div class="spec-row"><span class="spec-key">Stage 3</span><span class="spec-val">AC Amp (DC block)</span></div>
-        <div class="spec-row"><span class="spec-key">Stage 4</span><span class="spec-val">Active BPF 0.5–5 Hz</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 2</span><span class="spec-val">TIA (I → V)</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 3</span><span class="spec-val">AC Amp, DC block</span></div>
+        <div class="spec-row"><span class="spec-key">Stage 4</span><span class="spec-val">BPF 0.5–5 Hz</span></div>
         <div class="spec-row"><span class="spec-key">Stage 5</span><span class="spec-val">Schmitt Comparator</span></div>
         <div class="spec-row"><span class="spec-key">Stage 6</span><span class="spec-val">Pulse Shaper</span></div>
-        <div class="spec-row"><span class="spec-key">Verified</span><span class="spec-val good">LTSpice + Breadboard ✓</span></div>
+        <div class="spec-row"><span class="spec-key">Verified</span><span class="spec-val good">Sim + Hardware ✓</span></div>
       </div>
     </div>
   </div>
-
   <div class="media-section reveal">
     <div class="media-label">Signal Processing Chain</div>
-    <div style="background:var(--bg2);padding:40px 32px;">
-      <svg viewBox="0 0 720 100" style="width:100%;" xmlns="http://www.w3.org/2000/svg">
+    <div style="background:var(--bg2);padding:36px 28px;">
+      <svg viewBox="0 0 720 96" style="width:100%;" xmlns="http://www.w3.org/2000/svg">
         <defs><marker id="a3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e8651a" opacity="0.8"/></marker></defs>
-        <rect x="0" y="28" width="100" height="44" rx="2" fill="#1a1a1a" stroke="#e8651a" stroke-width="1.3"/>
-        <text x="50" y="47" text-anchor="middle" fill="#e8651a" font-size="9" font-family="DM Mono">PHOTODIODE</text>
-        <text x="50" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">+ LED</text>
-        <line x1="102" y1="50" x2="118" y2="50" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
-        <rect x="120" y="28" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/>
-        <text x="170" y="47" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">TIA</text>
-        <text x="170" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">I → V convert</text>
-        <line x1="222" y1="50" x2="238" y2="50" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
-        <rect x="240" y="28" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/>
-        <text x="290" y="47" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">AC AMP</text>
-        <text x="290" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">DC block + gain</text>
-        <line x1="342" y1="50" x2="358" y2="50" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
-        <rect x="360" y="28" width="100" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/>
-        <text x="410" y="47" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">BPF</text>
-        <text x="410" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">0.5–5 Hz</text>
-        <line x1="462" y1="50" x2="478" y2="50" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
-        <rect x="480" y="28" width="110" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/>
-        <text x="535" y="47" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">COMPARATOR</text>
-        <text x="535" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">Schmitt trigger</text>
-        <line x1="592" y1="50" x2="608" y2="50" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
-        <rect x="610" y="28" width="110" height="44" rx="2" fill="#1a1a1a" stroke="#4caf82" stroke-width="1.3"/>
-        <text x="665" y="47" text-anchor="middle" fill="#4caf82" font-size="9" font-family="DM Mono">PULSE OUTPUT</text>
-        <text x="665" y="63" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">Digital BPM</text>
+        <rect x="0" y="24" width="100" height="44" rx="2" fill="#1a1a1a" stroke="#e8651a" stroke-width="1.3"/><text x="50" y="43" text-anchor="middle" fill="#e8651a" font-size="9" font-family="DM Mono">PHOTODIODE</text><text x="50" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">+ LED</text>
+        <line x1="102" y1="46" x2="118" y2="46" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
+        <rect x="120" y="24" width="96" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/><text x="168" y="43" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">TIA</text><text x="168" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">I → V</text>
+        <line x1="218" y1="46" x2="234" y2="46" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
+        <rect x="236" y="24" width="96" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/><text x="284" y="43" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">AC AMP</text><text x="284" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">DC block</text>
+        <line x1="334" y1="46" x2="350" y2="46" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
+        <rect x="352" y="24" width="96" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/><text x="400" y="43" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">BPF</text><text x="400" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">0.5–5 Hz</text>
+        <line x1="450" y1="46" x2="466" y2="46" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
+        <rect x="468" y="24" width="110" height="44" rx="2" fill="#141414" stroke="rgba(232,101,26,0.45)" stroke-width="1"/><text x="523" y="43" text-anchor="middle" fill="#c0c0c0" font-size="9" font-family="DM Mono">COMPARATOR</text><text x="523" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">Schmitt</text>
+        <line x1="580" y1="46" x2="596" y2="46" stroke="#e8651a" stroke-width="1" marker-end="url(#a3)"/>
+        <rect x="598" y="24" width="122" height="44" rx="2" fill="#1a1a1a" stroke="#4caf82" stroke-width="1.3"/><text x="659" y="43" text-anchor="middle" fill="#4caf82" font-size="9" font-family="DM Mono">PULSE OUTPUT</text><text x="659" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">Digital BPM</text>
       </svg>
     </div>
-    <div class="media-caption" style="background:var(--bg2);"><strong>Complete PPG Signal Chain.</strong> Six cascaded stages convert a noisy μA photodiode current into a clean digital heart-rate pulse. Each stage was verified first in LTSpice, then confirmed on breadboard.</div>
+    <div class="media-caption" style="background:var(--bg2);"><strong>Five-stage PPG signal chain.</strong> From ~μA photodiode current to a clean digital heart-rate pulse. Each stage verified in LTSpice before breadboard build.</div>
   </div>
 </section>
 
@@ -423,86 +380,67 @@
   <div class="proj-meta reveal">
     <div class="proj-meta-left">
       <div class="proj-course">ENGR 466 — VLSI Design</div>
-      <div class="proj-title">Custom CMOS IC —<br>3-Bit 3-Input Full Adder</div>
+      <div class="proj-title">Custom CMOS IC —<br>3-Bit Full Adder</div>
       <div class="proj-period">Sep 2025 – Dec 2025 · UBC Okanagan</div>
     </div>
     <div class="proj-meta-right">
-      <span class="tag">CMOS</span><span class="tag">Cadence</span><span class="tag">130 nm</span><span class="tag">LVS</span><span class="tag">Full-Custom</span>
+      <span class="tag">CMOS</span><span class="tag">Cadence</span><span class="tag">130 nm</span><span class="tag">LVS</span>
     </div>
   </div>
-
   <div class="proj-story reveal">
     <div class="story-text">
       <div class="story-label">The Project</div>
       <div class="story-body">
-        <p>VLSI design bridges circuit theory and physical silicon. In this project, I designed a <strong>3-bit 3-input full adder in 130 nm CMOS</strong> — from transistor-level schematic through physical layout to verified silicon, following the same design flow used in professional IC development.</p>
-        <p>The design process covered gate-level logic, transistor-level implementation, transient simulation across all input combinations, delay extraction, power analysis, and <strong>corner simulation</strong> (FF and SS process corners with temperature and voltage variation) — the full set of checks required before a real tape-out.</p>
-        <p>The 1-bit full adder layout was then completed in Cadence Virtuoso with a passing <strong>LVS (Layout versus Schematic)</strong> verification — confirming that every physical transistor connection matches the schematic netlist. A bonus layout of the full 3-bit adder was also pursued for extra marks.</p>
+        <p>A full-custom <strong>3-bit 3-input full adder in 130 nm CMOS</strong>, designed from gate level to LVS-verified physical layout in Cadence Virtuoso — following the same flow used in professional IC tape-outs.</p>
+        <p>The project covered gate-level and transistor-level design, transient simulation of all input combinations, delay and power extraction, and <strong>corner simulation</strong> (FF/SS process, voltage, and temperature variation). The 1-bit adder layout was completed with a clean LVS pass. A bonus 3-bit full layout was also pursued — each stage built from the verified 1-bit cell with carry routing between stages.</p>
       </div>
     </div>
     <div class="story-sidebar">
       <div class="spec-table">
-        <div class="spec-table-title">Design Deliverables</div>
-        <div class="spec-row"><span class="spec-key">Process Node</span><span class="spec-val">130 nm CMOS</span></div>
-        <div class="spec-row"><span class="spec-key">Load Cap</span><span class="spec-val">CL = 2 pF</span></div>
-        <div class="spec-row"><span class="spec-key">Gate-level Logic</span><span class="spec-val good">Complete ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Transistor-level</span><span class="spec-val good">Complete ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Transient Sim</span><span class="spec-val good">Complete ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Corner Sim (FF/SS)</span><span class="spec-val good">Complete ✓</span></div>
-        <div class="spec-row"><span class="spec-key">1-bit Layout (LVS)</span><span class="spec-val good">LVS Clean ✓</span></div>
-        <div class="spec-row"><span class="spec-key">Tool</span><span class="spec-val">Cadence Virtuoso</span></div>
+        <div class="spec-table-title">Deliverables</div>
+        <div class="spec-row"><span class="spec-key">Process</span><span class="spec-val">130 nm CMOS</span></div>
+        <div class="spec-row"><span class="spec-key">Load</span><span class="spec-val">CL = 2 pF</span></div>
+        <div class="spec-row"><span class="spec-key">Transistor-level</span><span class="spec-val good">✓</span></div>
+        <div class="spec-row"><span class="spec-key">Transient Sim</span><span class="spec-val good">✓</span></div>
+        <div class="spec-row"><span class="spec-key">Corner Sim FF/SS</span><span class="spec-val good">✓</span></div>
+        <div class="spec-row"><span class="spec-key">1-bit Layout LVS</span><span class="spec-val good">Clean ✓</span></div>
+        <div class="spec-row"><span class="spec-key">3-bit Layout</span><span class="spec-val good">Bonus ✓</span></div>
       </div>
     </div>
   </div>
 
   <div class="media-section reveal">
     <div class="media-label">Schematics & Layouts — Cadence Virtuoso</div>
-
-    <!-- Row 1: Schematic + 1-bit layout -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="Schem3bitfinal.png" alt="3-bit Full Adder Schematic" style="width:100%;display:block;">
-        <div class="media-caption"><strong>3-Bit Full Adder — Top-Level Schematic.</strong> Three cascaded 1-bit full adder instances with carry chain. Designed at transistor level in Cadence Virtuoso.</div>
+        <img src="Schem3bitfinal.png" alt="3-bit full adder schematic">
+        <div class="media-caption"><strong>3-Bit Full Adder — Top-Level Schematic.</strong> Three cascaded 1-bit instances with carry chain in Cadence Virtuoso.</div>
       </div>
       <div class="media-item">
-        <img src="Schem1bit.png" alt="1-bit Full Adder Schematic" style="width:100%;display:block;">
-        <div class="media-caption"><strong>1-Bit Full Adder Schematic.</strong> Transistor-level CMOS implementation. Basis for layout, simulation, and delay/power extraction.</div>
+        <img src="Schem1bit.png" alt="1-bit full adder schematic">
+        <div class="media-caption"><strong>1-Bit Full Adder Schematic.</strong> Transistor-level CMOS implementation — basis for simulation, delay, and layout.</div>
       </div>
     </div>
-
-    <!-- Row 2: Layout images -->
     <div class="media-grid cols-3" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="lay1bit.png" alt="1-bit adder layout" style="width:100%;display:block;">
-        <div class="media-caption"><strong>1-Bit Full Adder Layout.</strong> LVS-clean physical layout in 130 nm. All DRC violations resolved.</div>
+        <img src="lay1bit.png" alt="1-bit layout">
+        <div class="media-caption"><strong>1-Bit Layout — LVS Clean.</strong> Physical layout in 130 nm, DRC and LVS verified.</div>
       </div>
       <div class="media-item">
-        <img src="lay3bit.png" alt="3-bit adder layout" style="width:100%;display:block;">
-        <div class="media-caption"><strong>3-Bit Full Adder Layout (Bonus).</strong> Full 3-bit layout — extended from the 1-bit cell with carry routing between stages.</div>
+        <img src="lay3bit.png" alt="3-bit layout">
+        <div class="media-caption"><strong>3-Bit Full Layout (Bonus).</strong> Extended from the 1-bit cell with carry routing.</div>
       </div>
       <div class="media-item">
-        <img src="LVS3bit.png" alt="LVS verification result" style="width:100%;display:block;">
-        <div class="media-caption"><strong>LVS Verification — Clean Pass.</strong> Layout vs. Schematic check confirms all transistor connections match between physical layout and schematic netlist.</div>
+        <img src="LVS3bit.png" alt="LVS verification">
+        <div class="media-caption"><strong>LVS Verification Pass.</strong> Physical layout connections confirmed to match schematic netlist.</div>
       </div>
     </div>
-
-    <!-- Row 3: LVS individual gates -->
     <div class="media-grid cols-3">
-      <div class="media-item">
-        <img src="LVS1bit.png" alt="1-bit LVS" style="width:100%;display:block;">
-        <div class="media-caption"><strong>1-Bit LVS Result.</strong></div>
-      </div>
-      <div class="media-item">
-        <img src="LVSAND.png" alt="AND LVS" style="width:100%;display:block;">
-        <div class="media-caption"><strong>AND Gate LVS.</strong></div>
-      </div>
-      <div class="media-item">
-        <img src="LVSINV.png" alt="INV LVS" style="width:100%;display:block;">
-        <div class="media-caption"><strong>Inverter LVS.</strong></div>
-      </div>
+      <div class="media-item"><img src="SchemAND.png" alt="AND schematic"><div class="media-caption"><strong>AND Gate Schematic.</strong></div></div>
+      <div class="media-item"><img src="SchemINV.png" alt="Inverter schematic"><div class="media-caption"><strong>Inverter Schematic.</strong> PMOS pull-up, NMOS pull-down — CMOS foundation.</div></div>
+      <div class="media-item"><img src="SchemXOR.png" alt="XOR schematic"><div class="media-caption"><strong>XOR Gate Schematic.</strong> Most complex standard cell — uses transmission gates.</div></div>
     </div>
-
-    <div class="info-note"><em>Images reference files by filename (e.g. <code>Schem3bitfinal.png</code>). These must be uploaded to your GitHub repository in the <strong>same folder</strong> as this HTML file. File names are case-sensitive — they must match exactly.</em></div>
+    <div class="info-note"><em>All image filenames match exactly. Upload these files (<code>Schem3bitfinal.png</code>, <code>lay1bit.png</code>, etc.) to the <strong>same GitHub folder</strong> as this HTML file. Filenames are case-sensitive.</em></div>
   </div>
 </section>
 
@@ -516,84 +454,127 @@
       <div class="proj-period">Sep 2025 – Dec 2025 · UBC Okanagan</div>
     </div>
     <div class="proj-meta-right">
-      <span class="tag">Antenna Design</span><span class="tag">AWR</span><span class="tag">EM Simulation</span><span class="tag">HF</span>
+      <span class="tag">AWR</span><span class="tag">EM Simulation</span><span class="tag">HF Antenna</span>
     </div>
   </div>
-
   <div class="proj-story reveal">
     <div class="story-text">
       <div class="story-label">The Challenge</div>
       <div class="story-body">
-        <p>The Beverage antenna is a classical HF receiving antenna used by serious amateur radio operators, shortwave listeners, and military HF systems. It achieves remarkable directivity and low-elevation gain by exploiting a long wire above lossy ground — but its electrically large geometry creates a fundamental problem: <strong>standard EM simulation tools were not designed to handle it.</strong></p>
-        <p>Starting from published literature and first-principles antenna theory, I designed a Beverage antenna geometry and built an iterative simulation workflow in AWR Microwave Office. I tuned the geometry and parameters across multiple simulation cycles to optimize <strong>gain, directivity, and beam direction</strong> toward the desired azimuth.</p>
-        <p>The most significant engineering challenge was the <strong>termination resistor</strong> — critical to the antenna's directional behavior — which AWR could not model directly. Adding the resistor via a schematic port only showed impedance and reflection, while connecting it to the EM structure's port did not work as expected. My solution was to <strong>approximate the resistor as a via to ground</strong>, which — while not a perfect lumped-element model at microwave frequencies — provided a valid and practical workaround within the tool's constraints for HF-scaled simulations.</p>
+        <p>The Beverage is a classical HF travelling-wave antenna used in amateur radio, shortwave listening, and military HF systems — valued for its directivity and low-elevation pattern. Its challenge: it is electrically enormous at HF frequencies, making standard EM simulation tools difficult or impossible to apply directly.</p>
+        <p>Starting from published papers and first-principles antenna theory, I designed a Beverage geometry and built an iterative simulation workflow in <strong>AWR Microwave Office</strong>. To work around AWR's computational limits with electrically large structures, I scaled the antenna to a higher frequency — a valid approach since the physics scale with wavelength. I then tuned the geometry across multiple simulation runs to optimize <strong>gain, directivity, and beam direction</strong>.</p>
+        <p>The most significant challenge was the <strong>termination resistor</strong>: AWR's schematic port only shows impedance/reflection, and adding a resistor directly to the EM structure port does not work. My solution was to approximate the resistor as a <strong>via to ground</strong> in the EM structure — a recognized limitation at microwave frequencies, but a practical and effective workaround for a scaled HF simulation.</p>
       </div>
     </div>
     <div class="story-sidebar">
       <div class="spec-table">
-        <div class="spec-table-title">Design Overview</div>
-        <div class="spec-row"><span class="spec-key">Antenna Type</span><span class="spec-val">Beverage (travelling wave)</span></div>
-        <div class="spec-row"><span class="spec-key">Application</span><span class="spec-val">HF Receive · 1–30 MHz</span></div>
-        <div class="spec-row"><span class="spec-key">Simulation Tool</span><span class="spec-val">AWR Microwave Office</span></div>
-        <div class="spec-row"><span class="spec-key">Sim Strategy</span><span class="spec-val orange">Scaled to higher freq.</span></div>
+        <div class="spec-table-title">Design Summary</div>
+        <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Beverage (travelling wave)</span></div>
+        <div class="spec-row"><span class="spec-key">Application</span><span class="spec-val">HF Receive 1–30 MHz</span></div>
+        <div class="spec-row"><span class="spec-key">Tool</span><span class="spec-val">AWR Microwave Office</span></div>
+        <div class="spec-row"><span class="spec-key">Sim Strategy</span><span class="spec-val orange">Frequency scaling</span></div>
         <div class="spec-row"><span class="spec-key">Optimized</span><span class="spec-val">Gain · Directivity · Beam</span></div>
-        <div class="spec-row"><span class="spec-key">Key Workaround</span><span class="spec-val">Via-to-ground resistor</span></div>
+        <div class="spec-row"><span class="spec-key">Resistor Fix</span><span class="spec-val">Via-to-ground approx.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWR simulation results -->
+  <div class="media-section reveal">
+    <div class="media-label">AWR Simulation Results</div>
+    <div class="media-grid cols-3" style="margin-bottom:2px;">
+      <div class="media-item">
+        <img src="Chosen resistor new.png" alt="AWR chosen resistor input impedance" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>Termination Resistor — Via Approximation.</strong> Input impedance (real and imaginary) with the via-to-ground resistor workaround. Confirms the approximation produces a usable termination for the scaled simulation.</div>
+      </div>
+      <div class="media-item">
+        <img src="length chosen.png" alt="AWR antenna length selection" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length — tuned to achieve the desired travelling-wave impedance characteristic.</div>
+      </div>
+      <div class="media-item">
+        <img src="reflection bandwidth low points.png" alt="AWR reflection bandwidth low points" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>Reflection Bandwidth — Low Points.</strong> Minimum reflection frequencies identifying the antenna's best-matched operating bands after geometry tuning.</div>
+      </div>
+    </div>
+    <div class="media-grid cols-3">
+      <div class="media-item">
+        <img src="reflection bandwidths.png" alt="AWR reflection bandwidths full sweep" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>Reflection Bandwidths — Full Sweep.</strong> Broadband reflection response showing matched regions across the simulation frequency range.</div>
+      </div>
+      <div class="media-item">
+        <img src="XZ plane E field.png" alt="AWR XZ plane E field radiation pattern" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>XZ Plane — E Field Radiation Pattern.</strong> Azimuthal cut showing the end-fire directivity of the Beverage antenna. Low-angle, directional gain confirms the design achieves the target beam direction.</div>
+      </div>
+      <div class="media-item">
+        <img src="YZ plane H field.png" alt="AWR YZ plane H field radiation pattern" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:8px;">
+        <div class="media-caption"><strong>YZ Plane — H Field Radiation Pattern.</strong> Elevation cut confirming low-angle radiation — critical for the Beverage's ability to receive low-elevation sky-wave and ground-wave signals at HF.</div>
       </div>
     </div>
   </div>
 
   <div class="iteration-timeline reveal">
-    <div class="iter-title">Design & Simulation Workflow</div>
+    <div class="iter-title">Design Workflow</div>
     <div class="iter-items">
-      <div class="iter-item">
-        <div class="iter-num">1</div>
-        <div class="iter-stage">Theory → Geometry</div>
-        <div class="iter-name">Initial Design</div>
-        <div class="iter-desc">Translated Beverage antenna theory from published papers into a workable baseline geometry. Defined the wire length, height above ground, and characteristic impedance targets based on the desired operating frequency and end-fire beam direction.</div>
+      <div class="iter-item"><div class="iter-num">1</div><div class="iter-stage">Theory → Geometry</div><div class="iter-name">Baseline Design</div><div class="iter-desc">Translated Beverage antenna theory from literature into a baseline geometry — wire length, height above ground, characteristic impedance — targeting end-fire beam direction.</div></div>
+      <div class="iter-item"><div class="iter-num">2</div><div class="iter-stage">Simulation Loop</div><div class="iter-name">EM Tuning in AWR</div><div class="iter-desc">Built iterative EM simulation workflow, frequency-scaled to work within AWR's constraints. Tuned geometry across multiple runs to hit gain, directivity, and beam direction targets.</div></div>
+      <div class="iter-item"><div class="iter-num">3</div><div class="iter-stage">Workaround</div><div class="iter-name">Resistor Approximation</div><div class="iter-desc">Solved AWR's inability to place a lumped termination resistor in the EM structure by approximating it as a via to ground — documented the limitations and validated it as a practical solution.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 06 FLYBACK ===== -->
+<section class="project-section" id="flyback">
+  <div class="proj-meta reveal">
+    <div class="proj-meta-left">
+      <div class="proj-course">ENGR 458 — Power Electronics</div>
+      <div class="proj-title">100W Isolated<br>Flyback Converter</div>
+      <div class="proj-period">UBC Okanagan</div>
+    </div>
+    <div class="proj-meta-right">
+      <span class="tag">Power Electronics</span><span class="tag">PSIM</span><span class="tag">PI Control</span><span class="tag">MOSFET Design</span>
+    </div>
+  </div>
+  <div class="proj-story reveal">
+    <div class="story-text">
+      <div class="story-label">The Project</div>
+      <div class="story-body">
+        <p>A <strong>100W isolated flyback DC-DC converter</strong> designed to deliver a regulated 20V/5A output from a wide input range of 90–225 VDC. The flyback topology was chosen for its galvanic isolation — the primary and secondary share no common reference, protecting the load from hazardous transients such as lightning-induced spikes.</p>
+        <p>The design process began with transformer turns ratio selection (1:3, secondary:primary) to keep MOSFET voltage stress manageable while maintaining reasonable duty cycles across the full input range. Magnetizing inductance was set to 250 µH to ensure continuous conduction at half-load, and output capacitance was selected to hold output ripple below 0.4 Vpp.</p>
+        <p>A <strong>closed-loop PI controller</strong> was designed for voltage regulation — the proportional path handles fast transient response and the integral path eliminates steady-state offset, keeping output at exactly 20V regardless of load or input variation. Component stress analysis drove semiconductor selection: the <strong>FDP12N35 MOSFET</strong> (350V/12A) and <strong>MBR6200F Schottky diode</strong> (200V/6A) were chosen with appropriate safety margins above worst-case calculated stresses.</p>
+        <p>The complete design was verified in <strong>PSIM simulation</strong> across four operating conditions — full and half load at both 90V and 225V input — with all simulation waveforms confirming alignment with hand calculations.</p>
       </div>
-      <div class="iter-item">
-        <div class="iter-num">2</div>
-        <div class="iter-stage">Simulation Loop</div>
-        <div class="iter-name">Iterative EM Tuning</div>
-        <div class="iter-desc">Built and iterated the EM simulation workflow in AWR, scaling the antenna to a higher frequency to work within AWR's computational constraints (full-scale HF antennas are too electrically large). Tuned geometry parameters across multiple runs to reach target gain and directivity.</div>
-      </div>
-      <div class="iter-item">
-        <div class="iter-num">3</div>
-        <div class="iter-stage">Engineering Workaround</div>
-        <div class="iter-name">Resistor Approximation</div>
-        <div class="iter-desc">Solved AWR's inability to directly model the termination resistor by approximating it as a via to ground in the EM structure. Recognized and documented the limitations of this approach at high frequency, while validating it as a practical and effective solution for the scaled simulation.</div>
+    </div>
+    <div class="story-sidebar">
+      <div class="spec-table">
+        <div class="spec-table-title">Design Specs</div>
+        <div class="spec-row"><span class="spec-key">Output Power</span><span class="spec-val orange">100 W</span></div>
+        <div class="spec-row"><span class="spec-key">Output Voltage</span><span class="spec-val">20 V regulated</span></div>
+        <div class="spec-row"><span class="spec-key">Output Current</span><span class="spec-val">5 A</span></div>
+        <div class="spec-row"><span class="spec-key">Input Range</span><span class="spec-val">90 – 225 VDC</span></div>
+        <div class="spec-row"><span class="spec-key">Turns Ratio</span><span class="spec-val">1:3 (Sec:Pri)</span></div>
+        <div class="spec-row"><span class="spec-key">Inductance</span><span class="spec-val">250 µH</span></div>
+        <div class="spec-row"><span class="spec-key">Output Ripple</span><span class="spec-val good">&lt; 0.4 Vpp ✓</span></div>
+        <div class="spec-row"><span class="spec-key">MOSFET</span><span class="spec-val">FDP12N35</span></div>
+        <div class="spec-row"><span class="spec-key">Diode</span><span class="spec-val">MBR6200F Schottky</span></div>
+        <div class="spec-row"><span class="spec-key">Simulation Tool</span><span class="spec-val">PSIM</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Antenna applications context -->
-  <div class="media-section reveal">
-    <div class="media-label">Applications of the Beverage Antenna</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
-      <div style="background:var(--bg2);padding:28px 32px;border-top:3px solid transparent;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='transparent'">
-        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Amateur Radio / DX</div>
-        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Favoured by HF contest and DX stations as a receive-only antenna on noisy bands (160m, 80m) due to excellent directivity and low noise pickup. Ideal for pulling in distant foreign stations at night.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 32px;border-top:3px solid transparent;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='transparent'">
-        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Commercial & Military HF</div>
-        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Deployed at HF communication sites as receive antennas where reliability of long-range links is critical — including intelligence/surveillance applications requiring improved SNR on specific HF channels.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 32px;border-top:3px solid transparent;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='transparent'">
-        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Ionospheric Research</div>
-        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Used in ionospheric sounding and propagation experiments to study low-angle sky-wave arrivals and ground-wave components, enabled by the antenna's inherently low elevation pattern.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 32px;border-top:3px solid transparent;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='transparent'">
-        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Direction-Selective Arrays</div>
-        <div style="font-size:13px;color:var(--gray);line-height:1.7;">Multiple Beverages combined into switchable or phased arrays to cover several azimuth directions — letting an operator quickly select the best receiving direction as propagation conditions change.</div>
-      </div>
+  <div class="iteration-timeline reveal">
+    <div class="iter-title">Design Process</div>
+    <div class="iter-items">
+      <div class="iter-item"><div class="iter-num">1</div><div class="iter-stage">Converter Design</div><div class="iter-name">Topology & Components</div><div class="iter-desc">Calculated transformer turns ratio, magnetizing inductance (250 µH), and output capacitance (80 µF) from power requirements and voltage conversion ratios. Selected 1:3 turns ratio to balance MOSFET stress and duty cycle range across 90–225V input.</div></div>
+      <div class="iter-item"><div class="iter-num">2</div><div class="iter-stage">Stress & Selection</div><div class="iter-name">Semiconductor Choice</div><div class="iter-desc">Calculated worst-case voltage and current stresses for both the switching MOSFET and output rectifier diode. Selected FDP12N35 (350V, 12A) and MBR6200F Schottky (200V, 6A) with adequate margin above calculated peak stresses.</div></div>
+      <div class="iter-item"><div class="iter-num">3</div><div class="iter-stage">Simulation</div><div class="iter-name">PSIM Verification</div><div class="iter-desc">Simulated four operating corners (full/half load × min/max input). Output voltage, inductor current, switch waveforms, and ripple all aligned with hand calculations, confirming the design across its full operating range.</div></div>
     </div>
-    <div class="info-note" style="margin-top:2px;"><em>Add your AWR simulation screenshots here once available — radiation pattern plots, gain vs. frequency curves, and before/after directivity comparisons would all strengthen this section.</em></div>
   </div>
 </section>
 
 
 <footer>
-  <span>© 2026 — Electrical Engineering Portfolio</span>
+  <span>© 2026 — Abdulaziz AlHumaid · Electrical Engineering</span>
   <span>UBC Okanagan</span>
 </footer>
 
@@ -603,12 +584,10 @@
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   function animCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor);}
   animCursor();
-
   const sections=document.querySelectorAll('.project-section');
   const tabs=document.querySelectorAll('.proj-tab');
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const a=document.querySelector(`.proj-tab[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});},{threshold:0.25});
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const a=document.querySelector(`.proj-tab[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});},{threshold:0.2});
   sections.forEach(s=>obs.observe(s));
-
   const reveals=document.querySelectorAll('.reveal');
   const obs2=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs2.unobserve(e.target);}});},{threshold:0.07});
   reveals.forEach(r=>obs2.observe(r));

@@ -3,214 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Electrical Engineering</title>
+<title>Abdulaziz AlHumaid — EE Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
-    --orange: #e8651a; --orange-glow: rgba(232,101,26,0.13);
-    --gray: #8a8a8a; --gray-light: #c0c0c0; --white: #f0ece6;
-    --border: rgba(232,101,26,0.2);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  * { cursor: none !important; }
-  #cursor { position:fixed; width:12px; height:12px; background:var(--orange); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:screen; }
-  #cursor-ring { position:fixed; width:36px; height:36px; border:1.5px solid var(--orange); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.3s,height 0.3s,opacity 0.3s; opacity:0.6; }
-  body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width:52px; height:52px; opacity:1; }
-  html { scroll-behavior: smooth; }
-  body { background:var(--bg); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.7; overflow-x:hidden; }
+:root{
+  --bg:#0d0d0d;--bg2:#141414;--bg3:#1a1a1a;
+  --orange:#e8651a;--og:rgba(232,101,26,0.13);
+  --gray:#8a8a8a;--gl:#c0c0c0;--white:#f0ece6;
+  --border:rgba(232,101,26,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*{cursor:none!important;}
+#cur{position:fixed;width:12px;height:12px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
+#ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--orange);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s;opacity:.6;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;overflow-x:hidden;}
 
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:rgba(13,13,13,0.88); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
-  .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:18px; letter-spacing:0.05em; color:var(--white); text-decoration:none; }
-  .nav-logo span { color:var(--orange); }
-  .nav-links { display:flex; gap:36px; list-style:none; }
-  .nav-links a { font-family:'DM Mono',monospace; font-size:12px; color:var(--gray); text-decoration:none; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.2s; position:relative; }
-  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--orange); transition:width 0.25s; }
-  .nav-links a:hover, .nav-links a.active { color:var(--orange); }
-  .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(13,13,13,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--white);text-decoration:none;}
+.logo em{color:var(--orange);font-style:normal;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--orange);transition:width .25s;}
+.nav-links a:hover,.nav-links a.on{color:var(--orange);}
+.nav-links a:hover::after,.nav-links a.on::after{width:100%;}
 
-  /* HERO */
-  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:120px 48px 80px; position:relative; overflow:hidden; }
-  .hero-grid { position:absolute; inset:0; opacity:0.025; background-image:linear-gradient(var(--orange) 1px,transparent 1px),linear-gradient(90deg,var(--orange) 1px,transparent 1px); background-size:60px 60px; }
-  .hero-glow { position:absolute; top:-200px; right:-200px; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(232,101,26,0.07) 0%,transparent 70%); pointer-events:none; }
-  .hero-label { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
-  .hero-label::before { content:''; width:32px; height:1px; background:var(--orange); }
-  .hero h1 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(52px,8vw,96px); line-height:1.0; letter-spacing:-0.02em; margin-bottom:32px; }
-  .hero h1 .line { display:block; overflow:hidden; }
-  .hero h1 .accent { color:var(--orange); }
-  .hero-desc { max-width:580px; color:var(--gray-light); font-size:15px; line-height:1.85; margin-bottom:48px; }
-  .hero-cta { display:flex; gap:20px; flex-wrap:wrap; }
-  .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--orange); color:#0d0d0d; padding:14px 28px; font-family:'Syne',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; transition:transform 0.2s,box-shadow 0.2s; }
-  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,101,26,0.35); }
-  .btn-secondary { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border); color:var(--gray-light); padding:14px 28px; font-family:'Syne',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; transition:border-color 0.2s,color 0.2s; }
-  .btn-secondary:hover { border-color:var(--orange); color:var(--orange); }
-  .hero-scroll { position:absolute; bottom:40px; left:48px; display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); animation:pulse 2.5s ease-in-out infinite; }
-  .hero-scroll::before { content:''; display:block; width:1px; height:40px; background:linear-gradient(to bottom,var(--orange),transparent); }
-  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
+.hgrid{position:absolute;inset:0;opacity:.025;background-image:linear-gradient(var(--orange) 1px,transparent 1px),linear-gradient(90deg,var(--orange) 1px,transparent 1px);background-size:60px 60px;}
+.hglow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,101,26,.07) 0%,transparent 70%);pointer-events:none;}
+.hlabel{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.hlabel::before{content:'';width:32px;height:1px;background:var(--orange);}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(52px,8vw,96px);line-height:1;letter-spacing:-.02em;margin-bottom:32px;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hdesc{max-width:580px;color:var(--gl);font-size:15px;line-height:1.85;margin-bottom:48px;}
+.cta{display:flex;gap:20px;flex-wrap:wrap;}
+.btn-a{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#0d0d0d;padding:14px 28px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.btn-a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,101,26,.35);}
+.btn-b{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);color:var(--gl);padding:14px 28px;font-family:'Syne',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,color .2s;}
+.btn-b:hover{border-color:var(--orange);color:var(--orange);}
+.hscroll{position:absolute;bottom:40px;left:48px;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);animation:pulse 2.5s ease-in-out infinite;}
+.hscroll::before{content:'';display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--orange),transparent);}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 
-  section { padding:100px 48px; }
-  .section-label { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:16px; display:flex; align-items:center; gap:12px; }
-  .section-label::before { content:''; width:32px; height:1px; background:var(--orange); }
-  .section-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(32px,4vw,52px); line-height:1.1; margin-bottom:60px; }
+section{padding:100px 48px;}
+.slabel{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.slabel::before{content:'';width:32px;height:1px;background:var(--orange);}
+.stitle{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,4vw,52px);line-height:1.1;margin-bottom:60px;}
 
-  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-  .about-text p { color:var(--gray-light); margin-bottom:20px; font-size:15px; line-height:1.9; }
-  .about-text p strong { color:var(--white); }
-  .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:48px; }
-  .stat-box { background:var(--bg3); padding:28px 24px; border-left:3px solid transparent; transition:border-color 0.2s,background 0.2s; }
-  .stat-box:hover { border-color:var(--orange); background:var(--bg2); }
-  .stat-number { font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); line-height:1; }
-  .stat-label { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:8px; }
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.at p{color:var(--gl);margin-bottom:20px;font-size:15px;line-height:1.9;}
+.at p strong{color:var(--white);}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;}
+.sbox{background:var(--bg3);padding:28px 24px;border-left:3px solid transparent;transition:border-color .2s,background .2s;}
+.sbox:hover{border-color:var(--orange);background:var(--bg2);}
+.snum{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--orange);line-height:1;}
+.slab{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-top:8px;}
 
-  .skills-panel { background:var(--bg2); padding:48px; }
-  .skills-title { font-family:'Syne',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:32px; padding-bottom:16px; border-bottom:1px solid var(--border); }
-  .skill-category { margin-bottom:28px; }
-  .skill-category-name { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:12px; }
-  .skill-tags { display:flex; flex-wrap:wrap; gap:8px; }
-  .skill-tag { padding:6px 14px; border:1px solid var(--border); font-size:12px; color:var(--gray-light); transition:border-color 0.2s,color 0.2s,background 0.2s; }
-  .skill-tag:hover { border-color:var(--orange); color:var(--orange); background:var(--orange-glow); }
+.sp{background:var(--bg2);padding:40px;}
+.sptitle{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.sc{margin-bottom:24px;}
+.scn{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:10px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tg{padding:5px 12px;border:1px solid var(--border);font-size:11px;color:var(--gl);transition:border-color .2s,color .2s,background .2s;}
+.tg:hover{border-color:var(--orange);color:var(--orange);background:var(--og);}
 
-  .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-  .project-card { background:var(--bg2); padding:40px; border-top:3px solid transparent; transition:border-color 0.3s,background 0.3s; text-decoration:none; display:block; position:relative; overflow:hidden; }
-  .project-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--orange-glow) 0%,transparent 60%); opacity:0; transition:opacity 0.3s; }
-  .project-card:hover { border-color:var(--orange); background:var(--bg3); }
-  .project-card:hover::before { opacity:1; }
-  .project-num { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.2em; color:var(--orange); margin-bottom:20px; opacity:0.6; }
-  .project-title { font-family:'Syne',sans-serif; font-weight:700; font-size:20px; color:var(--white); margin-bottom:12px; line-height:1.3; }
-  .project-desc { color:var(--gray); font-size:13px; line-height:1.7; margin-bottom:24px; }
-  .project-tags { display:flex; flex-wrap:wrap; gap:8px; }
-  .project-tag { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); opacity:0.8; padding:4px 10px; border:1px solid rgba(232,101,26,0.3); }
-  .project-arrow { position:absolute; top:40px; right:40px; font-size:20px; color:var(--orange); opacity:0; transform:translateX(-8px); transition:opacity 0.3s,transform 0.3s; }
-  .project-card:hover .project-arrow { opacity:1; transform:translateX(0); }
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.pc{background:var(--bg2);padding:36px;border-top:3px solid transparent;transition:border-color .3s,background .3s;text-decoration:none;display:block;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--og) 0%,transparent 60%);opacity:0;transition:opacity .3s;}
+.pc:hover{border-color:var(--orange);background:var(--bg3);}
+.pc:hover::before{opacity:1;}
+.pn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--orange);margin-bottom:16px;opacity:.6;}
+.pt{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;color:var(--white);margin-bottom:10px;line-height:1.3;}
+.pd{color:var(--gray);font-size:13px;line-height:1.7;margin-bottom:20px;}
+.ptags{display:flex;flex-wrap:wrap;gap:7px;}
+.ptag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);opacity:.8;padding:3px 9px;border:1px solid rgba(232,101,26,.3);}
+.parr{position:absolute;top:36px;right:36px;font-size:18px;color:var(--orange);opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s;}
+.pc:hover .parr{opacity:1;transform:translateX(0);}
 
-  .contact-strip { background:var(--bg2); border-top:1px solid var(--border); padding:80px 48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; }
-  .contact-heading { font-family:'Syne',sans-serif; font-size:32px; font-weight:800; }
-  .contact-left p { color:var(--gray); margin-top:8px; }
-  .contact-email { display:inline-flex; align-items:center; gap:8px; color:var(--orange); text-decoration:none; font-family:'Syne',sans-serif; font-weight:700; font-size:18px; border-bottom:1px solid var(--border); padding-bottom:4px; transition:border-color 0.2s; }
-  .contact-email:hover { border-color:var(--orange); }
+.cs{background:var(--bg2);border-top:1px solid var(--border);padding:80px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:40px;}
+.ch{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;}
+.cl p{color:var(--gray);margin-top:8px;}
+.ce{display:inline-flex;align-items:center;gap:10px;color:var(--orange);text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;font-size:18px;border-bottom:1px solid var(--border);padding-bottom:4px;transition:border-color .2s;}
+.ce:hover{border-color:var(--orange);}
 
-  footer { padding:24px 48px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:11px; color:var(--gray); letter-spacing:0.1em; }
+footer{padding:24px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:11px;color:var(--gray);letter-spacing:.1em;}
 
-  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
-  .reveal.visible { opacity:1; transform:none; }
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.rv.on{opacity:1;transform:none;}
 
-  @media(max-width:768px) { nav{padding:16px 24px;} .hero,section{padding-left:24px;padding-right:24px;} .about-grid,.projects-grid{grid-template-columns:1fr;gap:40px;} .nav-links{gap:20px;} }
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .hero,section{padding-left:24px;padding-right:24px;}
+  .ag,.pg{grid-template-columns:1fr;gap:40px;}
+  .nav-links{gap:20px;}
+}
 </style>
 </head>
 <body>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+
+<div id="cur"></div>
+<div id="ring"></div>
 
 <nav>
-  <a href="index.html" class="nav-logo">ENG<span>.</span>FOLIO</a>
+  <a href="index.html" class="logo">AlHumaid<em>.</em></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">About</a></li>
+    <li><a href="index.html" class="on">About</a></li>
     <li><a href="projects.html">Projects</a></li>
     <li><a href="reflection.html">Reflection</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-label">Electrical Engineering · UBC Okanagan · Class of 2026</div>
+  <div class="hgrid"></div>
+  <div class="hglow"></div>
+  <div class="hlabel">Electrical Engineering · UBC Okanagan · Class of 2026</div>
   <h1>
-    <span class="line">Hardware</span>
-    <span class="line">That <span class="accent">Works</span></span>
-    <span class="line">In The Field.</span>
+    <span style="display:block;">Abdulaziz</span>
+    <span style="display:block;"><em>AlHumaid</em></span>
   </h1>
-  <p class="hero-desc">
-    Fourth-year Electrical Engineering student specializing in hardware design and implementation — 
-    RF systems, analog circuits, VLSI, and electromechanical systems. I build things, test them in the real world, and iterate until they work.
+  <p class="hdesc">
+    Hardware designer and builder — RF systems, analog circuits, VLSI, power electronics,
+    and electromechanical systems. I design it on paper, build it on the bench, and test it in the field.
   </p>
-  <div class="hero-cta">
-    <a href="projects.html" class="btn-primary">View Projects →</a>
-    <a href="#about" class="btn-secondary">About Me</a>
+  <div class="cta">
+    <a href="projects.html" class="btn-a">View Projects →</a>
+    <a href="#about" class="btn-b">About Me</a>
   </div>
-  <div class="hero-scroll">Scroll to explore</div>
+  <div class="hscroll">Scroll to explore</div>
 </section>
 
 <section id="about">
-  <div class="section-label">About Me</div>
-  <h2 class="section-title reveal">Hardware Designer.<br>Builder. Problem Solver.</h2>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>
-        I'm a fourth-year Electrical Engineering student at <strong>UBC Okanagan</strong>, 
-        graduating in 2026. My work is firmly rooted in hardware — I'm most at home when I'm 
-        designing a circuit, winding a coil, or debugging a board on a bench. The code I write 
-        exists to bring hardware to life, not the other way around.
-      </p>
-      <p>
-        My experience spans RF communications, VLSI chip design, power electronics, motor systems, 
-        and biomedical sensing. Each project has sharpened a different dimension of my engineering 
-        instinct — from transistor-level layout in a 130 nm process to tuning an HF antenna simulation 
-        to achieve the right beam direction.
-      </p>
-      <p>
-        My capstone project — a <strong>High-Altitude Platform communications payload</strong> — 
-        validated long-range wireless links over 5.4 km in Kelowna using LoRa, Wi-Fi HaLow, 
-        and LTE on a self-contained platform weighing 591 g and built for under $375 CAD.
-      </p>
-      <p>
-        I care about building things that are honest: designs that are fully understood, 
-        documented clearly, and reliable enough to hand off to the next engineer with confidence.
-      </p>
-      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;">
-        <a href="projects.html" class="btn-primary">See My Work →</a>
-        <a href="mailto:gtr33441@gmail.com" class="btn-secondary">Get In Touch</a>
+  <div class="slabel">About Me</div>
+  <h2 class="stitle rv">Hardware First.<br>Build. Test. Iterate.</h2>
+  <div class="ag">
+    <div class="at rv">
+      <p>I'm <strong>Abdulaziz AlHumaid</strong>, a fourth-year Electrical Engineering student at
+      <strong>UBC Okanagan</strong>, graduating in 2026. My work is rooted in hardware design
+      and physical implementation — I'm most productive when I'm building something real.
+      Code and simulation are tools I use to serve the hardware, not the end goal.</p>
+      <p>My projects span RF and wireless communications, VLSI chip design in 130 nm CMOS,
+      analog biomedical sensing, power electronics, and electromechanical motor systems.
+      Each project has sharpened a different dimension of my engineering practice.</p>
+      <p>My capstone project — a <strong>High-Altitude Platform communications payload</strong> —
+      validated long-range wireless links over 5.4 km in Kelowna using LoRa, Wi-Fi HaLow,
+      and LTE on a self-contained platform weighing 591 g, built for under $375 CAD.</p>
+      <p>I care about designs that are fully understood, well-documented, and reliable enough
+      to hand off to the next engineer with confidence.</p>
+      <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="projects.html" class="btn-a">See My Work →</a>
+        <a href="mailto:gtr33441&#64;gmail.com" class="btn-b">Get In Touch</a>
       </div>
     </div>
-    <div class="reveal" style="display:flex; flex-direction:column; gap:2px;">
-      <div class="about-stats">
-        <div class="stat-box">
-          <div class="stat-number">5</div>
-          <div class="stat-label">Major Projects</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">5.4</div>
-          <div class="stat-label">km RF Link</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">591</div>
-          <div class="stat-label">gram Payload</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">2026</div>
-          <div class="stat-label">Graduating</div>
-        </div>
+    <div class="rv" style="display:flex;flex-direction:column;gap:2px;">
+      <div class="stats">
+        <div class="sbox"><div class="snum">6</div><div class="slab">Projects</div></div>
+        <div class="sbox"><div class="snum">5.4</div><div class="slab">km RF Link</div></div>
+        <div class="sbox"><div class="snum">100W</div><div class="slab">Power Design</div></div>
+        <div class="sbox"><div class="snum">130nm</div><div class="slab">CMOS Process</div></div>
       </div>
-      <div class="skills-panel" style="margin-top:2px;">
-        <div class="skills-title">Technical Skills</div>
-        <div class="skill-category">
-          <div class="skill-category-name">Hardware Design & Implementation</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Analog Circuits</span>
-            <span class="skill-tag">KiCad PCB</span>
-            <span class="skill-tag">LTSpice</span>
-            <span class="skill-tag">VLSI / Cadence</span>
-            <span class="skill-tag">3D Printing</span>
-            <span class="skill-tag">Breadboard Prototyping</span>
+      <div class="sp" style="margin-top:2px;">
+        <div class="sptitle">Technical Skills</div>
+        <div class="sc">
+          <div class="scn">Hardware Design &amp; Build</div>
+          <div class="tags">
+            <span class="tg">Analog Circuits</span><span class="tg">KiCad PCB</span>
+            <span class="tg">LTSpice</span><span class="tg">PSIM</span>
+            <span class="tg">VLSI / Cadence</span><span class="tg">3D Printing</span>
           </div>
         </div>
-        <div class="skill-category">
-          <div class="skill-category-name">RF & Antenna</div>
-          <div class="skill-tags">
-            <span class="skill-tag">LoRa 915 MHz</span>
-            <span class="skill-tag">Wi-Fi HaLow</span>
-            <span class="skill-tag">LTE / 4G</span>
-            <span class="skill-tag">AWR Microwave</span>
-            <span class="skill-tag">Antenna Simulation</span>
+        <div class="sc">
+          <div class="scn">RF &amp; Antenna</div>
+          <div class="tags">
+            <span class="tg">LoRa</span><span class="tg">Wi-Fi HaLow</span>
+            <span class="tg">LTE</span><span class="tg">AWR Microwave</span>
           </div>
         </div>
-        <div class="skill-category">
-          <div class="skill-category-name">Firmware & Tools</div>
-          <div class="skill-tags">
-            <span class="skill-tag">STM32 / C</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Linux / Raspberry Pi</span>
-            <span class="skill-tag">PSIM</span>
+        <div class="sc">
+          <div class="scn">Firmware &amp; Systems</div>
+          <div class="tags">
+            <span class="tg">STM32 / C</span><span class="tg">Python</span>
+            <span class="tg">Linux / RPi</span><span class="tg">FOC Control</span>
           </div>
         </div>
       </div>
@@ -218,78 +191,91 @@
   </div>
 </section>
 
-<!-- PROJECTS PREVIEW -->
-<section style="padding-top:20px;">
-  <div class="section-label">Selected Work</div>
-  <h2 class="section-title reveal">Projects</h2>
-  <div class="projects-grid">
-
-    <a href="projects.html#capstone" class="project-card reveal">
-      <div class="project-num">01 — Capstone · Sep 2025 – Apr 2026</div>
-      <div class="project-title">HAPS Communications Payload</div>
-      <div class="project-desc">Long-range wireless platform integrating LoRa, Wi-Fi HaLow, and LTE on a 591g balloon-deployable payload. 5.4 km verified RF link.</div>
-      <div class="project-tags"><span class="project-tag">LoRa</span><span class="project-tag">HaLow</span><span class="project-tag">LTE</span><span class="project-tag">RF Systems</span></div>
-      <div class="project-arrow">↗</div>
+<section style="padding-top:0;">
+  <div class="slabel">Selected Work</div>
+  <h2 class="stitle rv">Projects</h2>
+  <div class="pg">
+    <a href="projects.html#capstone" class="pc rv">
+      <div class="pn">01 — Capstone · Sep 2025 – Apr 2026</div>
+      <div class="pt">HAPS Communications Payload</div>
+      <div class="pd">Multi-protocol wireless relay integrating LoRa, HaLow, and LTE. 5.4 km field-tested RF link on a 591g balloon-ready platform.</div>
+      <div class="ptags"><span class="ptag">LoRa</span><span class="ptag">HaLow</span><span class="ptag">LTE</span><span class="ptag">Raspberry Pi</span></div>
+      <div class="parr">↗</div>
     </a>
-
-    <a href="projects.html#bldc" class="project-card reveal">
-      <div class="project-num">02 — ENGR 320 · Jan 2025 – Apr 2025</div>
-      <div class="project-title">Custom BLDC Motor & Controller</div>
-      <div class="project-desc">3D-printed outrunner motor with wye-wound stator. Contributed to sensorless FOC controller design and bench testing.</div>
-      <div class="project-tags"><span class="project-tag">STM32</span><span class="project-tag">KiCad</span><span class="project-tag">FOC</span><span class="project-tag">Motor Systems</span></div>
-      <div class="project-arrow">↗</div>
+    <a href="projects.html#bldc" class="pc rv">
+      <div class="pn">02 — ENGR 320 · Jan–Apr 2025</div>
+      <div class="pt">Custom BLDC Motor &amp; Controller</div>
+      <div class="pd">3D-printed outrunner motor with wye-wound stator. Sensorless FOC controller on STM32. Contributed to testing and design.</div>
+      <div class="ptags"><span class="ptag">STM32</span><span class="ptag">KiCad</span><span class="ptag">FOC</span></div>
+      <div class="parr">↗</div>
     </a>
-
-    <a href="projects.html#ppg" class="project-card reveal">
-      <div class="project-num">03 — ENGR 352 · Jan 2025 – Apr 2025</div>
-      <div class="project-title">PPG Heart-Rate Sensor</div>
-      <div class="project-desc">Optical sensing front-end with TIA, active filtering, Schmitt comparator, and pulse-shaping — from LTSpice to breadboard.</div>
-      <div class="project-tags"><span class="project-tag">Analog Design</span><span class="project-tag">LTSpice</span><span class="project-tag">TIA</span><span class="project-tag">Biomedical</span></div>
-      <div class="project-arrow">↗</div>
+    <a href="projects.html#ppg" class="pc rv">
+      <div class="pn">03 — ENGR 352 · Jan–Apr 2025</div>
+      <div class="pt">PPG Heart-Rate Sensor</div>
+      <div class="pd">Optical front-end with TIA, active BPF, Schmitt comparator, and pulse shaper. Verified LTSpice to breadboard.</div>
+      <div class="ptags"><span class="ptag">Analog</span><span class="ptag">LTSpice</span><span class="ptag">TIA</span></div>
+      <div class="parr">↗</div>
     </a>
-
-    <a href="projects.html#vlsi" class="project-card reveal">
-      <div class="project-num">04 — ENGR 466 · Sep 2025 – Dec 2025</div>
-      <div class="project-title">VLSI 3-Bit Full Adder</div>
-      <div class="project-desc">Full-custom 3-bit 3-input adder in 130nm CMOS. Transistor-level design, timing/power analysis, corner simulations, and LVS-clean layout.</div>
-      <div class="project-tags"><span class="project-tag">CMOS</span><span class="project-tag">Cadence</span><span class="project-tag">130nm</span><span class="project-tag">LVS</span></div>
-      <div class="project-arrow">↗</div>
+    <a href="projects.html#vlsi" class="pc rv">
+      <div class="pn">04 — ENGR 466 · Sep–Dec 2025</div>
+      <div class="pt">VLSI 3-Bit Full Adder</div>
+      <div class="pd">Full-custom CMOS adder in 130nm. Transistor-level design, delay/power analysis, FF/SS corners, LVS-clean layout.</div>
+      <div class="ptags"><span class="ptag">CMOS</span><span class="ptag">Cadence</span><span class="ptag">130nm</span></div>
+      <div class="parr">↗</div>
     </a>
-
-    <a href="projects.html#antenna" class="project-card reveal" style="grid-column: span 2;">
-      <div class="project-num">05 — ENGR 473 · Sep 2025 – Dec 2025</div>
-      <div class="project-title">Beverage Antenna Design & Simulation</div>
-      <div class="project-desc">Designed and EM-simulated a Beverage antenna for HF applications. Iterated on gain, directivity, and beam direction — and engineered a creative workaround for AWR's limitations when simulating electrically large antenna structures.</div>
-      <div class="project-tags"><span class="project-tag">Antenna Design</span><span class="project-tag">AWR</span><span class="project-tag">HF</span><span class="project-tag">EM Simulation</span></div>
-      <div class="project-arrow">↗</div>
+    <a href="projects.html#antenna" class="pc rv">
+      <div class="pn">05 — ENGR 473 · Sep–Dec 2025</div>
+      <div class="pt">Beverage Antenna Design</div>
+      <div class="pd">HF Beverage antenna designed from first principles and iterated in AWR EM simulation. Creative workaround for AWR's resistor limitation.</div>
+      <div class="ptags"><span class="ptag">AWR</span><span class="ptag">HF</span><span class="ptag">EM Sim</span></div>
+      <div class="parr">↗</div>
     </a>
-
+    <a href="projects.html#flyback" class="pc rv">
+      <div class="pn">06 — ENGR 458 · Power Electronics</div>
+      <div class="pt">100W Flyback Converter</div>
+      <div class="pd">Isolated DC-DC flyback converter delivering 20V/5A from 90–225VDC. PI control, device stress analysis, and PSIM simulation.</div>
+      <div class="ptags"><span class="ptag">Power Electronics</span><span class="ptag">PSIM</span><span class="ptag">PI Control</span></div>
+      <div class="parr">↗</div>
+    </a>
   </div>
 </section>
 
-<!-- CONTACT -->
-<div class="contact-strip reveal">
-  <div class="contact-left">
-    <div class="contact-heading">Let's connect.</div>
+<div class="cs rv">
+  <div class="cl">
+    <div class="ch">Let's connect.</div>
     <p>Open to opportunities, collaborations, and conversations.</p>
   </div>
-  <a href="mailto:gtr33441@gmail.com" class="contact-email">✉ gtr33441@gmail.com</a>
+  <a href="mailto:gtr33441&#64;gmail.com" class="ce">&#9993; gtr33441&#64;gmail.com</a>
 </div>
 
 <footer>
-  <span>© 2026 — Electrical Engineering Portfolio</span>
+  <span>&#169; 2026 &#8212; Abdulaziz AlHumaid &middot; Electrical Engineering</span>
   <span>UBC Okanagan</span>
 </footer>
 
 <script>
-  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  function animCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor);}
-  animCursor();
-  const reveals=document.querySelectorAll('.reveal');
-  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1});
-  reveals.forEach(r=>obs.observe(r));
+(function(){
+  var c=document.getElementById('cur'),r=document.getElementById('ring');
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+  function tick(){
+    c.style.left=mx+'px';c.style.top=my+'px';
+    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
+    r.style.left=rx+'px';r.style.top=ry+'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+  var els=document.querySelectorAll('.rv');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){e.target.classList.add('on');},i*80);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  els.forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>
