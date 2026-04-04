@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0d0d0d; --bg2:#141414; --bg3:#1a1a1a; --orange:#e8651a; --orange-glow:rgba(232,101,26,0.10); --gray:#8a8a8a; --gray-light:#c0c0c0; --white:#f0ece6; --border:rgba(232,101,26,0.2); }
+  :root { --bg:#0d0d0d; --bg2:#141414; --bg3:#1a1a1a; --orange:#e8651a; --gray:#8a8a8a; --gray-light:#c0c0c0; --white:#f0ece6; --border:rgba(232,101,26,0.2); }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   *{cursor:none!important;}
   #cursor{position:fixed;width:12px;height:12px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
@@ -16,24 +16,23 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;overflow-x:hidden;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(13,13,13,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
   .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:0.05em;color:var(--white);text-decoration:none;}
   .nav-logo span{color:var(--orange);}
   .nav-links{display:flex;gap:36px;list-style:none;}
   .nav-links a{font-family:'DM Mono',monospace;font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;position:relative;}
-  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--orange);transition:width 0.25s ease;}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--orange);transition:width 0.25s;}
   .nav-links a:hover,.nav-links a.active{color:var(--orange);}
   .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 
   .page-header{padding:160px 48px 80px;position:relative;overflow:hidden;}
-  .page-header::before{content:'';position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(var(--orange) 1px,transparent 1px),linear-gradient(90deg,var(--orange) 1px,transparent 1px);background-size:60px 60px;}
+  .page-header::before{content:'';position:absolute;inset:0;opacity:0.025;background-image:linear-gradient(var(--orange) 1px,transparent 1px),linear-gradient(90deg,var(--orange) 1px,transparent 1px);background-size:60px 60px;}
   .page-header-label{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
   .page-header-label::before{content:'';width:32px;height:1px;background:var(--orange);}
   .page-header h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(48px,7vw,88px);line-height:1.0;letter-spacing:-0.02em;}
   .page-header-sub{color:var(--gray);font-size:13px;margin-top:16px;max-width:480px;}
 
   .reflection-body{padding:60px 48px 120px;max-width:860px;}
-
   .q-block{margin-bottom:72px;padding-left:32px;border-left:3px solid var(--border);transition:border-color 0.3s;}
   .q-block:hover{border-color:var(--orange);}
   .q-num{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
@@ -41,15 +40,11 @@
   .q-answer{color:var(--gray-light);font-size:15px;line-height:1.95;}
   .q-answer p{margin-bottom:16px;}
   .q-answer strong{color:var(--white);}
-
   .word-count{display:inline-block;margin-top:40px;padding:10px 20px;background:var(--bg2);border:1px solid var(--border);font-size:12px;color:var(--gray);letter-spacing:0.1em;}
   .word-count span{color:var(--orange);}
-
   .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
   .reveal.visible{opacity:1;transform:none;}
-
   footer{padding:24px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:11px;color:var(--gray);letter-spacing:0.1em;}
-
   @media(max-width:768px){nav,.page-header,.reflection-body{padding-left:24px;padding-right:24px;}}
 </style>
 </head>
@@ -78,12 +73,8 @@
     <div class="q-num">Question 01</div>
     <div class="q-text">What did you learn about the design process from your experience in this course?</div>
     <div class="q-answer">
-      <p>
-        The most important thing I learned about the design process is that iteration is not a sign of failure — it is the process. Coming into capstone, I expected that a well-reasoned initial design would require only minor refinements. What I found instead was that each prototype revealed constraints and failure modes that were invisible on paper. When our first LoRa-to-HAP integration test failed at 11.5 km, it wasn't a setback; it told us exactly where the gap between theory and hardware was located. That feedback drove a sharper understanding of the system than any simulation could have.
-      </p>
-      <p>
-        I also learned that design decisions are rarely purely technical. Adding Wi-Fi HaLow improved throughput but increased integration burden and power draw. Adding LTE backhaul completed the communication chain but raised the complexity ceiling of the entire software stack. Every improvement came with a cost, and learning to weigh those trade-offs explicitly — instead of always choosing the technically superior option — is a skill I didn't have before this project.
-      </p>
+      <p>The most important thing I learned about the design process is that iteration is not a sign of failure — it is the process. Coming into capstone, I expected that a well-reasoned initial design would require only minor refinements. What I found instead was that each prototype revealed constraints and failure modes that were invisible on paper. When our first LoRa-to-HAP integration test failed at 11.5 km, it wasn't a setback; it told us exactly where the gap between theory and hardware was located. That feedback drove a sharper understanding of the system than any simulation could have.</p>
+      <p>I also learned that design decisions are rarely purely technical. Adding Wi-Fi HaLow improved throughput but increased integration burden and power draw. Adding LTE backhaul completed the communication chain but raised the complexity ceiling of the entire software stack. Every improvement came with a cost, and learning to weigh those trade-offs explicitly — instead of always choosing the technically superior option — is a skill I didn't have before this project.</p>
     </div>
   </div>
 
@@ -91,12 +82,8 @@
     <div class="q-num">Question 02</div>
     <div class="q-text">Based on your experiences in this course, what are the most important attributes of an engineer?</div>
     <div class="q-answer">
-      <p>
-        I believe the most important attribute is <strong>intellectual honesty</strong> — the willingness to accurately report what your system does and does not do. In our capstone, we documented both the 5.4 km LoRa success and the 11.5 km integration failure with equal transparency. That honesty is what makes an engineering report useful to the next team who inherits the work. An engineer who only reports successes leaves hidden landmines for everyone who comes after.
-      </p>
-      <p>
-        Equally important is <strong>systems thinking</strong> — the ability to hold the whole in mind while working on a part. I learned this acutely while winding coils on the BLDC motor stator: a small asymmetry in winding geometry propagates into back-EMF imbalance, which then makes the FOC algorithm's life harder. Every sub-system decision is simultaneously a constraint on every other sub-system. Engineers who can navigate that complexity without losing sight of the top-level goal are the ones who build things that actually work.
-      </p>
+      <p>I believe the most important attribute is <strong>intellectual honesty</strong> — the willingness to accurately report what your system does and does not do. In our capstone, we documented both the 5.4 km LoRa success and the 11.5 km integration failure with equal transparency. That honesty is what makes an engineering report useful to the next team who inherits the work. An engineer who only reports successes leaves hidden landmines for everyone who comes after.</p>
+      <p>Equally important is <strong>systems thinking</strong> — the ability to hold the whole in mind while working on a part. Whether I was tuning an antenna simulation in AWR or debugging the BLDC controller on the bench, I learned that decisions made at one level always propagate to every other level. Engineers who can navigate that complexity without losing sight of the top-level goal are the ones who build things that actually work.</p>
     </div>
   </div>
 
@@ -104,12 +91,8 @@
     <div class="q-num">Question 03</div>
     <div class="q-text">How has your experience on this project contributed to your understanding of the role and responsibilities of the professional engineer in society?</div>
     <div class="q-answer">
-      <p>
-        Building a communications system for <strong>emergency and underserved applications</strong> gave me a concrete sense of what engineering responsibility means. Our system operates in shared, licence-exempt spectrum under ISED regulations. Every watt of transmit power we choose affects the spectrum available to others in the same band. That regulatory constraint isn't bureaucratic friction — it's a formalized expression of engineering's responsibility to the public, and working within it forced me to internalize the EGBC Code of Ethics in a way that reading it alone never could.
-      </p>
-      <p>
-        I also came to understand that responsible engineering extends beyond technical compliance. A system designed to serve remote communities must be <strong>accessible, explainable, and maintainable</strong> by people who may not have our technical background. That shaped how I think about documentation, modular design, and open hardware choices — all of which become acts of professional responsibility when your system is intended to serve the public.
-      </p>
+      <p>Building a communications system for <strong>emergency and underserved applications</strong> gave me a concrete sense of what engineering responsibility means. Our system operates in shared, licence-exempt spectrum under ISED regulations. Every watt of transmit power we choose affects the spectrum available to others in the same band. That regulatory constraint isn't bureaucratic friction — it's a formalized expression of engineering's responsibility to the public, and working within it forced me to internalize the EGBC Code of Ethics in a way that reading it alone never could.</p>
+      <p>I also came to understand that responsible engineering extends beyond technical compliance. A system designed to serve remote communities must be <strong>accessible, explainable, and maintainable</strong> by people who may not have our technical background. That shaped how I think about documentation, modular design, and open hardware choices — all of which become acts of professional responsibility when your system is intended to serve the public.</p>
     </div>
   </div>
 
@@ -117,29 +100,24 @@
     <div class="q-num">Question 04</div>
     <div class="q-text">What strengths do you bring to your engineering career? Which areas need growth, and how will you facilitate that growth?</div>
     <div class="q-answer">
-      <p>
-        My strongest attribute is the ability to work across abstraction layers — from transistor-level CMOS layout in Cadence, to analog signal conditioning on a breadboard, to firmware on a microcontroller, to network-stack configuration on Linux. That breadth is rare, and it means I can communicate credibly across a full hardware-software team. I also bring <strong>a bias toward verification</strong>: I am not satisfied by a design that works in simulation; I want to see it working on real hardware under real conditions.
-      </p>
-      <p>
-        The area I most need to grow is <strong>project scoping and time estimation</strong>. I tend to underestimate integration time — the stage between "each subsystem works individually" and "the full system works together" always takes longer than I plan for. I will address this by deliberately building integration phases into my schedules as first-class milestones rather than treating them as transitions between milestones. I also want to deepen my RF and antenna design fundamentals, an area where I have breadth but not yet depth, and I plan to pursue that through independent study and targeted project work as I enter my professional career.
-      </p>
+      <p>My greatest strength is <strong>hardware instinct</strong> — the ability to think physically about a circuit or system, build it, and debug it on real hardware. I am most productive and confident when I'm working hands-on, whether that's tuning a layout in Cadence, probing a transimpedance amplifier on an oscilloscope, or assembling a wireless payload for field testing. That orientation toward implementation means I tend to find problems that only show up in hardware, not in simulation.</p>
+      <p>The area I most need to grow is <strong>project scoping and time estimation</strong>. I consistently underestimate integration time — the stage between "each subsystem works" and "the full system works together" always takes longer than I plan for. I will address this by deliberately building integration phases into my schedules as first-class milestones. I also want to deepen my RF and antenna design fundamentals beyond what a single course provided, and I plan to pursue that through independent study and hands-on project work as I move into my professional career.</p>
     </div>
   </div>
 
-  <div class="reveal" style="margin-top:16px;">
-    <div class="word-count">Approximate word count: <span>~380 words</span></div>
+  <div class="reveal">
+    <div class="word-count">Approximate word count: <span>~390 words</span></div>
   </div>
 
 </div>
 
 <footer>
-  <span>© 2025 — Electrical Engineering Portfolio</span>
+  <span>© 2026 — Electrical Engineering Portfolio</span>
   <span>UBC Okanagan</span>
 </footer>
 
 <script>
-  const cursor=document.getElementById('cursor');
-  const ring=document.getElementById('cursor-ring');
+  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
   let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   function animCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor);}
