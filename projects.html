@@ -370,7 +370,13 @@
         <rect x="598" y="24" width="122" height="44" rx="2" fill="#1a1a1a" stroke="#4caf82" stroke-width="1.3"/><text x="659" y="43" text-anchor="middle" fill="#4caf82" font-size="9" font-family="DM Mono">PULSE OUTPUT</text><text x="659" y="59" text-anchor="middle" fill="#8a8a8a" font-size="7.5" font-family="DM Mono">Digital BPM</text>
       </svg>
     </div>
-    <div class="media-caption" style="background:var(--bg2);"><strong>Five-stage PPG signal chain.</strong> From ~μA photodiode current to a clean digital heart-rate pulse. Each stage verified in LTSpice before breadboard build.</div>
+    <div class="media-caption" style="background:var(--bg2);"><strong>Signal Processing Chain Diagram.</strong> From ~μA photodiode current to a clean digital heart-rate pulse. Each stage verified in LTSpice before breadboard build.</div>
+
+    <!-- PPG output waveform -->
+    <div class="media-item" style="margin-top:2px;">
+      <img src="PPG%20graph.jpg" alt="PPG heart rate output waveform" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:420px;">
+      <div class="media-caption"><strong>PPG Output Waveform — Breadboard Verification.</strong> Measured output of the complete signal chain on real hardware. Each pulse corresponds to one heartbeat, confirming that the analog front-end successfully extracts a clean, periodic signal from the noisy photodiode input. The waveform shape and regularity validate both the bandpass filter's frequency selection and the Schmitt comparator's noise rejection.</div>
+    </div>
   </div>
 </section>
 
