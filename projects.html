@@ -68,8 +68,9 @@
   .media-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
   .media-grid.cols-4{grid-template-columns:1fr 1fr 1fr 1fr;}
   .media-item{background:var(--bg2);overflow:hidden;}
-  .media-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s,filter 0.3s;filter:brightness(0.88) saturate(0.85);}
-  .media-item:hover img{transform:scale(1.03);filter:brightness(1) saturate(1);}
+  .media-item img{width:100%;height:auto;max-height:420px;object-fit:contain;display:block;transition:transform 0.4s,filter 0.3s;filter:brightness(0.88) saturate(0.85);}
+  .media-item:hover img{transform:scale(1.02);filter:brightness(1) saturate(1);}
+  .media-item img.cover{object-fit:cover;max-height:340px;}
   .media-caption{padding:14px 18px;background:var(--bg2);font-size:12px;color:var(--gl);line-height:1.5;border-top:1px solid var(--border);}
   .media-caption strong{color:var(--white);display:block;margin-bottom:4px;}
 
@@ -218,11 +219,11 @@
     <!-- Row 1: Enclosure photos -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="housing%20day%20test.jpg" alt="HAP payload enclosure closed" style="aspect-ratio:4/3;object-fit:cover;">
+        <img src="housing%20day%20test.jpg" alt="HAP payload enclosure closed" class="cover">
         <div class="media-caption"><strong>Fig 1. HAP Payload — Final Enclosure.</strong> The completed 3D-printed ASA enclosure housing the full communications payload. LoRa and HaLow client devices visible in front. Total assembled mass: 591 g, well within the 2 kg target.</div>
       </div>
       <div class="media-item">
-        <img src="housing%20day%20test%20open.jpg" alt="HAP enclosure open showing internals" style="aspect-ratio:4/3;object-fit:cover;">
+        <img src="housing%20day%20test%20open.jpg" alt="HAP enclosure open showing internals" class="cover">
         <div class="media-caption"><strong>Fig 2. Enclosure Interior — Modular Layout.</strong> Internal view showing the Raspberry Pi compute module, SIM7670G LTE modem, HaLow transceiver, and LoRa module mounted on the payload tray. Designed for modularity — any radio can be removed independently.</div>
       </div>
     </div>
@@ -230,11 +231,11 @@
     <!-- Row 2: System diagrams -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="HAP%20breakdown%20simple.png" alt="Simple system breakdown diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="HAP%20breakdown%20simple.png" alt="Simple system breakdown diagram">
         <div class="media-caption"><strong>Fig 3. System Overview.</strong> High-level breakdown of the HAP communications platform showing the three independent radio links — LoRa for long-range, HaLow for local high-bandwidth, and LTE for internet backhaul.</div>
       </div>
       <div class="media-item">
-        <img src="Network%20Diagram.png" alt="Full network architecture diagram" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="Network%20Diagram.png" alt="Full network architecture diagram">
         <div class="media-caption"><strong>Fig 4. Full Network Architecture.</strong> Complete system topology showing LTE WAN backhaul, Wi-Fi HaLow IP links, LoRa Reticulum transport layer, and client device connections. The Reticulum stack handles routing across all three radio interfaces simultaneously.</div>
       </div>
     </div>
@@ -242,11 +243,11 @@
     <!-- Row 3: Test results graphs -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="SNR%20graph.png" alt="SNR vs distance graph" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:16px;">
+        <img src="SNR%20graph.png" alt="SNR vs distance graph">
         <div class="media-caption"><strong>Fig 5. SNR vs. Distance — LoRa Range Test.</strong> Signal-to-noise ratio across all six test locations in Kelowna, BC. General trend follows expected inverse relationship with distance. The sharp dip at ~3.2 km corresponds to Test Point 4, where a semi-direct path with terrain obstructions severely attenuated the signal despite similar range to Test Point 5.</div>
       </div>
       <div class="media-item">
-        <img src="map%20test%20with%20numbers%20final.png" alt="Geographic test coverage map" style="aspect-ratio:16/9;object-fit:contain;background:#141414;padding:8px;">
+        <img src="map%20test%20with%20numbers%20final.png" alt="Geographic test coverage map">
         <div class="media-caption"><strong>Fig 6. Geographic Test Coverage — Kelowna, BC.</strong> Satellite map showing all six LoRa test locations with distance rings from the transmitter base. Marker colors encode signal quality: green = strong (&gt;5 dB SNR), yellow = fair (0–5 dB), pink = poor (&lt;0 dB). The red marker at 11.5 km marks the failed LoRa-to-HAP integration test.</div>
       </div>
     </div>
@@ -254,11 +255,11 @@
     <!-- Row 4: HaLow + elevation -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="HaLow%20speed.png" alt="End-to-end speed test result" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <img src="HaLow%20speed.png" alt="End-to-end speed test result">
         <div class="media-caption"><strong>Fig 7. End-to-End Speed Test — Ookla Speedtest.</strong> Full chain validation: iPhone 15 Pro Max → Wi-Fi HaLow → Raspberry Pi → LTE → Internet via Rogers Wireless. Achieved 0.39 Mbps download and 0.45 Mbps upload — far exceeding the ≥2 kbps design requirement (R2) and confirming the core HAPS relay use case.</div>
       </div>
       <div class="media-item">
-        <img src="elevation%20plot.png" alt="Elevation and signal profile" style="aspect-ratio:4/3;object-fit:contain;background:#141414;padding:12px;">
+        <img src="elevation%20plot.png" alt="Elevation and signal profile">
         <div class="media-caption"><strong>Fig 8. Signal Health and Elevation Profile.</strong> Top panel: SNR (green) and RSSI (blue) vs. distance. Bottom panel: terrain elevation profile with SNR color-coded at each receiver location. Test points 4 and 5, located 255–310 m above the transmitter, partially simulate the altitude differential expected in a real high-altitude deployment.</div>
       </div>
     </div>
@@ -374,7 +375,7 @@
 
     <!-- PPG output waveform -->
     <div class="media-item" style="margin-top:2px;">
-      <img src="PPG%20graph.jpg" alt="PPG heart rate output waveform" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:420px;">
+      <img src="PPG%20graph.jpg" alt="PPG heart rate output waveform">
       <div class="media-caption"><strong>PPG Output Waveform — Breadboard Verification.</strong> Measured output of the complete signal chain on real hardware. Each pulse corresponds to one heartbeat, confirming that the analog front-end successfully extracts a clean, periodic signal from the noisy photodiode input. The waveform shape and regularity validate both the bandpass filter's frequency selection and the Schmitt comparator's noise rejection.</div>
     </div>
   </div>
@@ -420,50 +421,50 @@
 
     <!-- Full adder schematics - one per row for readability -->
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="Schem3bitfinal.png" alt="3-bit full adder top-level schematic" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:480px;">
+      <img src="Schem3bitfinal.png" alt="3-bit full adder top-level schematic">
       <div class="media-caption"><strong>Fig 1. 3-Bit Full Adder — Top-Level Schematic.</strong> Three cascaded 1-bit full adder instances connected in Cadence Virtuoso, with carry-out of each stage feeding the carry-in of the next. The 3-bit adder accepts inputs A[2:0], B[2:0], and carry-in, producing outputs S[2:0] and carry-out.</div>
     </div>
 
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="Schem1bit.png" alt="1-bit full adder transistor-level schematic" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:480px;">
+      <img src="Schem1bit.png" alt="1-bit full adder transistor-level schematic">
       <div class="media-caption"><strong>Fig 2. 1-Bit Full Adder — Transistor-Level Schematic.</strong> Full CMOS implementation in 130 nm process. The cell accepts inputs A, B, and carry-in (Cin), producing sum output and carry-out (Cout). This is the foundational cell replicated three times in the 3-bit design above.</div>
     </div>
 
     <!-- Layouts - one per row -->
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="lay1bit.png" alt="1-bit full adder physical layout" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:480px;">
+      <img src="lay1bit.png" alt="1-bit full adder physical layout">
       <div class="media-caption"><strong>Fig 3. 1-Bit Full Adder — Physical Layout (LVS Clean).</strong> Full-custom layout in 130 nm CMOS designed in Cadence Virtuoso. Metal layers (cyan/blue), polysilicon gate (yellow), active diffusion (red/green), and via connections are visible. All DRC violations were resolved and LVS verification passed — confirming that every physical transistor connection matches the schematic netlist.</div>
     </div>
 
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="lay3bit.png" alt="3-bit full adder physical layout bonus" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:480px;">
+      <img src="lay3bit.png" alt="3-bit full adder physical layout bonus">
       <div class="media-caption"><strong>Fig 4. 3-Bit Full Adder — Full Layout (Bonus Deliverable).</strong> Complete physical layout of the 3-bit adder, assembled from three 1-bit cells with carry routing between stages. This was an optional bonus target — completing it required careful inter-cell metal routing to connect carry chains without DRC violations.</div>
     </div>
 
     <!-- LVS results -->
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="LVS3bit.png" alt="3-bit LVS verification result" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:24px;max-height:480px;">
+      <img src="LVS3bit.png" alt="3-bit LVS verification result">
       <div class="media-caption"><strong>Fig 5. LVS Verification — 3-Bit Adder.</strong> Layout Versus Schematic check result. A clean LVS pass confirms that the physical layout faithfully implements the intended transistor-level schematic — a mandatory verification step in any professional IC design flow before silicon tape-out.</div>
     </div>
 
     <!-- Standard cells - 2 per row -->
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="SchemAND.png" alt="AND gate schematic" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:200px;">
+        <img src="SchemAND.png" alt="AND gate schematic">
         <div class="media-caption"><strong>Fig 6. AND Gate — Transistor Schematic.</strong> CMOS AND implemented as NAND followed by inverter. Series NMOS in pull-down network, parallel PMOS in pull-up.</div>
       </div>
       <div class="media-item">
-        <img src="SchemINV.png" alt="Inverter schematic" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:200px;">
+        <img src="SchemINV.png" alt="Inverter schematic">
         <div class="media-caption"><strong>Fig 7. Inverter — Transistor Schematic.</strong> The fundamental CMOS gate. Single PMOS pull-up and NMOS pull-down. Forms the basis of all other standard cells in the library.</div>
       </div>
     </div>
     <div class="media-grid cols-2">
       <div class="media-item">
-        <img src="SchemXOR.png" alt="XOR gate schematic" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:200px;">
+        <img src="SchemXOR.png" alt="XOR gate schematic">
         <div class="media-caption"><strong>Fig 8. XOR Gate — Transistor Schematic.</strong> Most complex standard cell in the library. Uses transmission gates and complementary pass-transistor logic — requires both true and complemented inputs to implement correctly.</div>
       </div>
       <div class="media-item">
-        <img src="LVS1bit.png" alt="1-bit LVS verification" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:200px;">
+        <img src="LVS1bit.png" alt="1-bit LVS verification">
         <div class="media-caption"><strong>Fig 9. LVS Verification — 1-Bit Adder.</strong> Individual cell LVS clean pass. Completed before assembling the 3-bit design, following a bottom-up verification approach.</div>
       </div>
     </div>
@@ -511,37 +512,37 @@
 
     <!-- 3D structure - full width -->
     <div class="media-item" style="margin-bottom:2px;">
-      <img src="Antenna%203D%20structure.png" alt="Beverage antenna 3D EM structure in AWR" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:32px;max-height:400px;">
+      <img src="Antenna%203D%20structure.png" alt="Beverage antenna 3D EM structure in AWR">
       <div class="media-caption"><strong>Fig 1. Beverage Antenna — 3D EM Structure in AWR Microwave Office.</strong> The simulation geometry showing two key elements: the horizontal wire (grey, running along the top) representing the Beverage antenna conductor, and the vertical orange element representing the via-to-ground used to approximate the termination resistor. The surrounding box defines the simulation boundary and substrate. This structure was the basis for all EM simulations below — frequency-scaled to make the electrically large HF antenna tractable within AWR's computational limits.</div>
     </div>
 
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="Chosen%20resistor%20new.png" alt="AWR input impedance via-to-ground resistor" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="Chosen%20resistor%20new.png" alt="AWR input impedance via-to-ground resistor">
         <div class="media-caption"><strong>Fig 2. Termination Resistor — Via-to-Ground Approximation.</strong> Real and imaginary parts of input impedance (Z11) after applying the via-to-ground workaround. AWR cannot place a lumped resistor directly inside an EM structure — this via approximation was engineered as a practical solution to introduce the termination loss required for travelling-wave operation.</div>
       </div>
       <div class="media-item">
-        <img src="length%20chosen.png" alt="AWR antenna length impedance vs frequency" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="length%20chosen.png" alt="AWR antenna length impedance vs frequency">
         <div class="media-caption"><strong>Fig 3. Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length. The length was iterated until the impedance characteristic showed flat, resistive behaviour across the band — confirming a properly terminated travelling-wave antenna rather than a resonant structure.</div>
       </div>
     </div>
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
-        <img src="reflection%20bandwidth%20low%20points.png" alt="AWR return loss low points" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="reflection%20bandwidth%20low%20points.png" alt="AWR return loss low points">
         <div class="media-caption"><strong>Fig 4. Reflection Bandwidth — Minimum Return Loss Points.</strong> S11 in dB showing the frequency bands of best impedance match after geometry tuning. The marked valley frequencies identify where power transfer into the antenna is maximized — lower return loss means less reflected power.</div>
       </div>
       <div class="media-item">
-        <img src="reflection%20bandwidths.png" alt="AWR broadband reflection sweep" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="reflection%20bandwidths.png" alt="AWR broadband reflection sweep">
         <div class="media-caption"><strong>Fig 5. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss across the complete simulation range. Multiple matched bands are visible — consistent with the electrically long travelling-wave structure. The design was tuned to align useful matched regions with the scaled equivalent of the target HF operating frequencies.</div>
       </div>
     </div>
     <div class="media-grid cols-2">
       <div class="media-item">
-        <img src="XZ%20plane%20E%20field.png" alt="XZ plane E field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="XZ%20plane%20E%20field.png" alt="XZ plane E field radiation pattern polar">
         <div class="media-caption"><strong>Fig 6. XZ Plane — E Field Radiation Pattern.</strong> Azimuthal polar cut confirming the Beverage antenna's characteristic end-fire directivity. The main lobe points along the wire axis, validating that the design achieves the intended beam direction. This directional gain is the defining property that makes the Beverage antenna effective for receiving distant HF stations from a specific geographic region.</div>
       </div>
       <div class="media-item">
-        <img src="YZ%20plane%20H%20field.png" alt="YZ plane H field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
+        <img src="YZ%20plane%20H%20field.png" alt="YZ plane H field radiation pattern polar">
         <div class="media-caption"><strong>Fig 7. YZ Plane — H Field Radiation Pattern.</strong> Elevation polar cut confirming low-angle radiation — the other critical property of the Beverage antenna. The pattern peaks at low elevation angles, enabling reception of low-elevation sky-wave and ground-wave HF signals from distant transmitters, rather than local near-vertical signals.</div>
       </div>
     </div>
