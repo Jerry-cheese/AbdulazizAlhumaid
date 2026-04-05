@@ -507,35 +507,42 @@
 
   <!-- AWR simulation results -->
   <div class="media-section reveal">
-    <div class="media-label">AWR Simulation Results</div>
+    <div class="media-label">AWR EM Structure &amp; Simulation Results</div>
+
+    <!-- 3D structure - full width -->
+    <div class="media-item" style="margin-bottom:2px;">
+      <img src="Antenna%203D%20structure.png" alt="Beverage antenna 3D EM structure in AWR" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:32px;max-height:400px;">
+      <div class="media-caption"><strong>Fig 1. Beverage Antenna — 3D EM Structure in AWR Microwave Office.</strong> The simulation geometry showing two key elements: the horizontal wire (grey, running along the top) representing the Beverage antenna conductor, and the vertical orange element representing the via-to-ground used to approximate the termination resistor. The surrounding box defines the simulation boundary and substrate. This structure was the basis for all EM simulations below — frequency-scaled to make the electrically large HF antenna tractable within AWR's computational limits.</div>
+    </div>
+
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
         <img src="Chosen%20resistor%20new.png" alt="AWR input impedance via-to-ground resistor" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 1. Termination Resistor — Via-to-Ground Approximation.</strong> Real and imaginary parts of input impedance (Z11) after applying the via-to-ground workaround. AWR cannot place a lumped resistor directly inside an EM structure — this via approximation was engineered as a practical solution to introduce the termination loss required for travelling-wave operation.</div>
+        <div class="media-caption"><strong>Fig 2. Termination Resistor — Via-to-Ground Approximation.</strong> Real and imaginary parts of input impedance (Z11) after applying the via-to-ground workaround. AWR cannot place a lumped resistor directly inside an EM structure — this via approximation was engineered as a practical solution to introduce the termination loss required for travelling-wave operation.</div>
       </div>
       <div class="media-item">
         <img src="length%20chosen.png" alt="AWR antenna length impedance vs frequency" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 2. Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length. The length was iterated until the impedance characteristic showed flat, resistive behaviour across the band — confirming a properly terminated travelling-wave antenna rather than a resonant structure.</div>
+        <div class="media-caption"><strong>Fig 3. Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length. The length was iterated until the impedance characteristic showed flat, resistive behaviour across the band — confirming a properly terminated travelling-wave antenna rather than a resonant structure.</div>
       </div>
     </div>
     <div class="media-grid cols-2" style="margin-bottom:2px;">
       <div class="media-item">
         <img src="reflection%20bandwidth%20low%20points.png" alt="AWR return loss low points" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 3. Reflection Bandwidth — Minimum Return Loss Points.</strong> S11 in dB showing the frequency bands of best impedance match after geometry tuning. The marked valley frequencies identify where power transfer into the antenna is maximized — lower return loss means less reflected power.</div>
+        <div class="media-caption"><strong>Fig 4. Reflection Bandwidth — Minimum Return Loss Points.</strong> S11 in dB showing the frequency bands of best impedance match after geometry tuning. The marked valley frequencies identify where power transfer into the antenna is maximized — lower return loss means less reflected power.</div>
       </div>
       <div class="media-item">
         <img src="reflection%20bandwidths.png" alt="AWR broadband reflection sweep" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 4. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss across the complete simulation range. Multiple matched bands are visible — consistent with the electrically long travelling-wave structure. The design was tuned to align useful matched regions with the scaled equivalent of the target HF operating frequencies.</div>
+        <div class="media-caption"><strong>Fig 5. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss across the complete simulation range. Multiple matched bands are visible — consistent with the electrically long travelling-wave structure. The design was tuned to align useful matched regions with the scaled equivalent of the target HF operating frequencies.</div>
       </div>
     </div>
     <div class="media-grid cols-2">
       <div class="media-item">
         <img src="XZ%20plane%20E%20field.png" alt="XZ plane E field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 5. XZ Plane — E Field Radiation Pattern.</strong> Azimuthal polar cut confirming the Beverage antenna's characteristic end-fire directivity. The main lobe points along the wire axis, validating that the design achieves the intended beam direction. This directional gain is the defining property that makes the Beverage antenna effective for receiving distant HF stations from a specific geographic region.</div>
+        <div class="media-caption"><strong>Fig 6. XZ Plane — E Field Radiation Pattern.</strong> Azimuthal polar cut confirming the Beverage antenna's characteristic end-fire directivity. The main lobe points along the wire axis, validating that the design achieves the intended beam direction. This directional gain is the defining property that makes the Beverage antenna effective for receiving distant HF stations from a specific geographic region.</div>
       </div>
       <div class="media-item">
         <img src="YZ%20plane%20H%20field.png" alt="YZ plane H field radiation pattern polar" style="width:100%;display:block;object-fit:contain;background:#0a0a0a;padding:16px;min-height:240px;">
-        <div class="media-caption"><strong>Fig 6. YZ Plane — H Field Radiation Pattern.</strong> Elevation polar cut confirming low-angle radiation — the other critical property of the Beverage antenna. The pattern peaks at low elevation angles, enabling reception of low-elevation sky-wave and ground-wave HF signals from distant transmitters, rather than local near-vertical signals.</div>
+        <div class="media-caption"><strong>Fig 7. YZ Plane — H Field Radiation Pattern.</strong> Elevation polar cut confirming low-angle radiation — the other critical property of the Beverage antenna. The pattern peaks at low elevation angles, enabling reception of low-elevation sky-wave and ground-wave HF signals from distant transmitters, rather than local near-vertical signals.</div>
       </div>
     </div>
   </div>
