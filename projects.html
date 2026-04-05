@@ -433,7 +433,7 @@
     <!-- Layouts - one per row -->
     <div class="media-item" style="margin-bottom:2px;">
       <img src="lay1bit.png" alt="1-bit full adder physical layout">
-      <div class="media-caption"><strong>Fig 3. 1-Bit Full Adder — Physical Layout (LVS Clean).</strong> Full-custom layout in 130 nm CMOS designed in Cadence Virtuoso. Metal layers (cyan/blue), polysilicon gate (yellow), active diffusion (red/green), and via connections are visible. All DRC violations were resolved and LVS verification passed — confirming that every physical transistor connection matches the schematic netlist.</div>
+      <div class="media-caption"><strong>Fig 3. 1-Bit Full Adder — Physical Layout (LVS Clean).</strong> Full-custom layout in 130 nm CMOS designed in Cadence Virtuoso. Metal layers are shown in cyan and yellow, polysilicon gate in blue, and active diffusion in red/green. LVS verification passed — confirming that every physical transistor connection matches the schematic netlist.</div>
     </div>
 
     <div class="media-item" style="margin-bottom:2px;">
@@ -523,7 +523,7 @@
       </div>
       <div class="media-item">
         <img src="length%20chosen.png" alt="AWR antenna length impedance vs frequency">
-        <div class="media-caption"><strong>Fig 3. Antenna Length Selection.</strong> Input impedance vs. frequency for the chosen wire length. The length was iterated until the impedance characteristic showed flat, resistive behaviour across the band — confirming a properly terminated travelling-wave antenna rather than a resonant structure.</div>
+        <div class="media-caption"><strong>Fig 3. Antenna Length Selection — Resonant Length.</strong> Input impedance vs. frequency for the chosen wire length. Rather than tuning for a flat travelling-wave impedance at this stage, the length was chosen to place a resonance at the desired center frequency. This establishes a good starting point before adding the termination resistor — a resonant length ensures that after the resistor is introduced, the minimum reflection still falls at the center frequency and at its 1.5 GHz multiples (e.g. 3 GHz center → next minimum at ~4.5 GHz), giving predictable and usable bandwidth at each harmonic.</div>
       </div>
     </div>
     <div class="media-grid cols-2" style="margin-bottom:2px;">
@@ -533,7 +533,7 @@
       </div>
       <div class="media-item">
         <img src="reflection%20bandwidths.png" alt="AWR broadband reflection sweep">
-        <div class="media-caption"><strong>Fig 5. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss across the complete simulation range. Multiple matched bands are visible — consistent with the electrically long travelling-wave structure. The design was tuned to align useful matched regions with the scaled equivalent of the target HF operating frequencies.</div>
+        <div class="media-caption"><strong>Fig 5. Reflection Bandwidths — Full Frequency Sweep.</strong> Broadband return loss (S11) across the full simulation range. The plot identifies the usable operating bandwidths — defined as the frequency regions where S11 falls below −10 dB, the standard threshold in antenna design for acceptable impedance matching. The valleys occur at the center frequency and at multiples of 1.5 GHz from it (e.g. center at 3 GHz → next valley near 4.5 GHz), a direct consequence of the resonant length chosen in Fig 3. Each valley below −10 dB represents a usable operating band.</div>
       </div>
     </div>
     <div class="media-grid cols-2">
